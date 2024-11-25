@@ -5891,7 +5891,7 @@ var $author$project$Main$view = function (model) {
 						$elm$html$Html$div,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$class('w-full lg:w-1/2 p-8 bg-gray-50 overflow-y-scroll')
+								$elm$html$Html$Attributes$class('w-full lg:w-1/2 bg-gray-50 h-full flex flex-col items-center p-8 overflow-y-scroll')
 							]),
 						_List_fromArray(
 							[
@@ -5899,7 +5899,7 @@ var $author$project$Main$view = function (model) {
 								$elm$html$Html$div,
 								_List_fromArray(
 									[
-										$elm$html$Html$Attributes$class('h-full flex flex-col items-center')
+										$elm$html$Html$Attributes$class('flex items-center space-x-5')
 									]),
 								_List_fromArray(
 									[
@@ -5907,514 +5907,505 @@ var $author$project$Main$view = function (model) {
 										$elm$html$Html$div,
 										_List_fromArray(
 											[
-												$elm$html$Html$Attributes$class('flex items-center space-x-5')
+												$elm$html$Html$Attributes$class('w-20')
 											]),
 										_List_fromArray(
 											[
 												A2(
-												$elm$html$Html$div,
+												$elm$svg$Svg$svg,
 												_List_fromArray(
 													[
-														$elm$html$Html$Attributes$class('w-20')
+														$elm$svg$Svg$Attributes$viewBox('0 0 99 58')
 													]),
 												_List_fromArray(
 													[
 														A2(
-														$elm$svg$Svg$svg,
+														$elm$svg$Svg$path,
 														_List_fromArray(
 															[
-																$elm$svg$Svg$Attributes$viewBox('0 0 99 58')
+																$elm$svg$Svg$Attributes$d('M11.9 49.6c-2.1 0-4.2-.7-5.8-2.2A8.2 8.2 0 0 1 3 41.6c0-.2 0-.4-.1-.6V24.7s4.1 0 4.1 3.7v4.7l.6-.3c.1 0 .1-.1.1-.1.1 0 .2-.1.2-.1a8.2 8.2 0 0 1 4.2-1.1h.4c1.9.1 3.5.6 5 1.7 2.1 1.6 3.3 3.6 3.7 6 .3 2.1 0 4.1-1 5.8-1.5 2.5-3.5 4-6.2 4.5-.8 0-1.5.1-2.1.1zm.2-14.3c-.3 0-.6 0-.9.1-2.6.3-4.2 2.4-4.2 5v.4c0 1.5.6 2.7 1.7 3.6.9.8 2.2 1.3 3.4 1.3.9 0 1.9-.3 2.7-.7 1.9-1.1 2.7-2.9 2.4-5.2-.3-2.2-2.1-4.5-5.1-4.5zM69.1 49.6c-2.4 0-4.7-.9-6.5-2.7a8.78 8.78 0 0 1-2.7-6c-.1-2.5.7-4.9 2.5-6.7 1.8-1.8 4.1-2.9 6.7-2.9 5 0 9.2 4.1 9.2 9.1 0 2.4-.9 4.6-2.6 6.4a9.13 9.13 0 0 1-6.1 2.8h-.5zm.1-14.3c-.3 0-.6 0-1 .1a5.1 5.1 0 0 0-4.3 5.2v.4c.1 2.8 2.3 4.9 5.1 4.9.9 0 1.9-.3 2.7-.7 1.9-1.1 2.6-2.9 2.3-5.2-.1-2.5-2-4.7-4.8-4.7zM40.2 24.7v24.6h4.3V28.4c-.1-3.6-4.3-3.7-4.3-3.7zM46.4 24.7v24.6h4.3V28.4c0-3.9-4.3-3.7-4.3-3.7z')
 															]),
-														_List_fromArray(
-															[
-																A2(
-																$elm$svg$Svg$path,
-																_List_fromArray(
-																	[
-																		$elm$svg$Svg$Attributes$d('M11.9 49.6c-2.1 0-4.2-.7-5.8-2.2A8.2 8.2 0 0 1 3 41.6c0-.2 0-.4-.1-.6V24.7s4.1 0 4.1 3.7v4.7l.6-.3c.1 0 .1-.1.1-.1.1 0 .2-.1.2-.1a8.2 8.2 0 0 1 4.2-1.1h.4c1.9.1 3.5.6 5 1.7 2.1 1.6 3.3 3.6 3.7 6 .3 2.1 0 4.1-1 5.8-1.5 2.5-3.5 4-6.2 4.5-.8 0-1.5.1-2.1.1zm.2-14.3c-.3 0-.6 0-.9.1-2.6.3-4.2 2.4-4.2 5v.4c0 1.5.6 2.7 1.7 3.6.9.8 2.2 1.3 3.4 1.3.9 0 1.9-.3 2.7-.7 1.9-1.1 2.7-2.9 2.4-5.2-.3-2.2-2.1-4.5-5.1-4.5zM69.1 49.6c-2.4 0-4.7-.9-6.5-2.7a8.78 8.78 0 0 1-2.7-6c-.1-2.5.7-4.9 2.5-6.7 1.8-1.8 4.1-2.9 6.7-2.9 5 0 9.2 4.1 9.2 9.1 0 2.4-.9 4.6-2.6 6.4a9.13 9.13 0 0 1-6.1 2.8h-.5zm.1-14.3c-.3 0-.6 0-1 .1a5.1 5.1 0 0 0-4.3 5.2v.4c.1 2.8 2.3 4.9 5.1 4.9.9 0 1.9-.3 2.7-.7 1.9-1.1 2.6-2.9 2.3-5.2-.1-2.5-2-4.7-4.8-4.7zM40.2 24.7v24.6h4.3V28.4c-.1-3.6-4.3-3.7-4.3-3.7zM46.4 24.7v24.6h4.3V28.4c0-3.9-4.3-3.7-4.3-3.7z')
-																	]),
-																_List_Nil),
-																A2(
-																$elm$svg$Svg$path,
-																_List_fromArray(
-																	[
-																		$elm$svg$Svg$Attributes$d('M52.6 49.3v-2.7-6.4c0-1.4.1-2.9.7-4.4.9-2.1 2.5-3.3 4.7-4 1.8-.5 3.4-.4 3.4-.4v3.9s-1 0-2 .3c-1.4.4-2.3 1.3-2.5 2.8-.1.6-.2 1.4-.2 2.2v8.7h-4.1zM79.9 51.7c1.8 0 2.3.9 2.7 1.3.6.5 1.4.8 2.1.8 2.3 0 4.1-2.1 4.1-4.1v-.9c-1 .6-2.1.8-3.2.8-4.1 0-7.3-3.4-7.3-7.6V31.6h4.1v10.2c0 1.9 1.5 3.6 3.2 3.6 1.9 0 3.2-1.6 3.2-3.6v-6.5c0-3.7 4.1-3.7 4.1-3.7v18c0 4.2-3.1 8.1-8.2 8.1-3.1 0-5.9-1.8-7.1-4.7-.4-.8-.5-1.4-.5-1.4s1.3.1 2.8.1zM30.3 45.9c-1.7 0-3.1-.8-4-2l13-4.6c-.6-3-1.8-4.9-3.6-6.2a9.3 9.3 0 0 0-7-1.5c-.6.1-1 .2-1.6.4a8.96 8.96 0 0 0-5.8 9.3 9 9 0 0 0 3.2 6.2c1.8 1.5 4 2.2 6.3 2.2 1 0 1.9-.2 2.9-.6 3.7-1.3 5.4-4.1 5.8-6.7h-2.4c-1.5 0-2.1 1-2.5 1.4a5.94 5.94 0 0 1-4.3 2.1zm-1.7-10.3c.1 0 .1 0 .2-.1H29.1c.4-.1.8-.2 1.3-.2.9 0 1.8.3 2.6.7.4.2.7.5 1 .8V37.1l.4.4-9.2 3.2v-.5c.1-2.2 1.4-3.9 3.4-4.6zM75.6 5.5c-.7 0-1.3.6-1.3 1.3 0 .7.7 1.4 1.5 1.2.3 1.1.9 2.1 1.8 2.8l.4.2.4-.3c.7-.6 1.4-1.7 1.7-2.8h.3c.7 0 1.3-.6 1.3-1.3s-.7-1.2-1.4-1.2c-.8 0-1.3.6-1.3 1.3 0 .9-.5 2.1-1.1 2.9-.6-.7-1-1.8-1.1-2.9.1-.6-.5-1.2-1.2-1.2zm16.5 11.6c-2.5-6.2-6.1-8-7.6-8.6.1-.4.1-.7.1-1.2 0-3.6-3-6.5-6.6-6.5-3.5 0-6.3 2.8-6.8 6.4-.7 8.7 5 13.5 7.8 15.7 1.6 1.2 2.4 2.1 1.5 3.6-.6.8-1.2 2-1.8 2.2-1.6.3-2.1 1.3-2.1 1.3H78c1.8 0 2.3-.1 4.1-3 1.7-2.9-1-4.5-2.1-5.4-2.8-2.1-8-6.4-7.3-14.2v-.1c.3-3 2.5-5.2 5.4-5.2a5.16 5.16 0 0 1 3.7 8.8c-.9 1-2.2 1.5-3.6 1.5-.5 0-.9-.1-1.3-.2-1.4-.4-2 .6-2 .6l-.1.1.1.1c.9.6 2.2.9 3.3.9 1.8 0 3.4-.6 4.6-1.9.6-.6 1.1-1.3 1.4-2 1.2.5 4.4 2.1 6.7 7.7.6 1.4 1.1 2.8 1.6 4-1.8 0-8.1-.2-11.2-5.1-.8-1.3-2.1-1-2.1-1 3.2 7.7 12.3 7.5 14 7.6.8 2 1.5 3.6 1.8 4.5-.7 0-2.1-.3-3.7-1.7a7.11 7.11 0 0 0-5.1-1.9l-4 6.3s1.9 0 2.7-1.2l2.2-3.5c1.1.1 2.2.6 3.3 1.5 2.1 1.7 3.4 1.9 4.7 1.9 1.2.1 1.9-.3 1.9-.3s-2.4-5.6-4.9-11.7z')
-																	]),
-																_List_Nil)
-															]))
-													])),
-												A2(
-												$elm$html$Html$div,
-												_List_fromArray(
-													[
-														A2($elm$html$Html$Attributes$style, 'color', '#e15a1d')
-													]),
-												_List_fromArray(
-													[
+														_List_Nil),
 														A2(
-														$elm$svg$Svg$svg,
+														$elm$svg$Svg$path,
 														_List_fromArray(
 															[
-																$elm$svg$Svg$Attributes$fill('none'),
-																$elm$svg$Svg$Attributes$viewBox('0 0 24 24'),
-																$elm$svg$Svg$Attributes$strokeWidth('3'),
-																$elm$svg$Svg$Attributes$stroke('currentColor'),
-																$elm$svg$Svg$Attributes$class('size-6')
+																$elm$svg$Svg$Attributes$d('M52.6 49.3v-2.7-6.4c0-1.4.1-2.9.7-4.4.9-2.1 2.5-3.3 4.7-4 1.8-.5 3.4-.4 3.4-.4v3.9s-1 0-2 .3c-1.4.4-2.3 1.3-2.5 2.8-.1.6-.2 1.4-.2 2.2v8.7h-4.1zM79.9 51.7c1.8 0 2.3.9 2.7 1.3.6.5 1.4.8 2.1.8 2.3 0 4.1-2.1 4.1-4.1v-.9c-1 .6-2.1.8-3.2.8-4.1 0-7.3-3.4-7.3-7.6V31.6h4.1v10.2c0 1.9 1.5 3.6 3.2 3.6 1.9 0 3.2-1.6 3.2-3.6v-6.5c0-3.7 4.1-3.7 4.1-3.7v18c0 4.2-3.1 8.1-8.2 8.1-3.1 0-5.9-1.8-7.1-4.7-.4-.8-.5-1.4-.5-1.4s1.3.1 2.8.1zM30.3 45.9c-1.7 0-3.1-.8-4-2l13-4.6c-.6-3-1.8-4.9-3.6-6.2a9.3 9.3 0 0 0-7-1.5c-.6.1-1 .2-1.6.4a8.96 8.96 0 0 0-5.8 9.3 9 9 0 0 0 3.2 6.2c1.8 1.5 4 2.2 6.3 2.2 1 0 1.9-.2 2.9-.6 3.7-1.3 5.4-4.1 5.8-6.7h-2.4c-1.5 0-2.1 1-2.5 1.4a5.94 5.94 0 0 1-4.3 2.1zm-1.7-10.3c.1 0 .1 0 .2-.1H29.1c.4-.1.8-.2 1.3-.2.9 0 1.8.3 2.6.7.4.2.7.5 1 .8V37.1l.4.4-9.2 3.2v-.5c.1-2.2 1.4-3.9 3.4-4.6zM75.6 5.5c-.7 0-1.3.6-1.3 1.3 0 .7.7 1.4 1.5 1.2.3 1.1.9 2.1 1.8 2.8l.4.2.4-.3c.7-.6 1.4-1.7 1.7-2.8h.3c.7 0 1.3-.6 1.3-1.3s-.7-1.2-1.4-1.2c-.8 0-1.3.6-1.3 1.3 0 .9-.5 2.1-1.1 2.9-.6-.7-1-1.8-1.1-2.9.1-.6-.5-1.2-1.2-1.2zm16.5 11.6c-2.5-6.2-6.1-8-7.6-8.6.1-.4.1-.7.1-1.2 0-3.6-3-6.5-6.6-6.5-3.5 0-6.3 2.8-6.8 6.4-.7 8.7 5 13.5 7.8 15.7 1.6 1.2 2.4 2.1 1.5 3.6-.6.8-1.2 2-1.8 2.2-1.6.3-2.1 1.3-2.1 1.3H78c1.8 0 2.3-.1 4.1-3 1.7-2.9-1-4.5-2.1-5.4-2.8-2.1-8-6.4-7.3-14.2v-.1c.3-3 2.5-5.2 5.4-5.2a5.16 5.16 0 0 1 3.7 8.8c-.9 1-2.2 1.5-3.6 1.5-.5 0-.9-.1-1.3-.2-1.4-.4-2 .6-2 .6l-.1.1.1.1c.9.6 2.2.9 3.3.9 1.8 0 3.4-.6 4.6-1.9.6-.6 1.1-1.3 1.4-2 1.2.5 4.4 2.1 6.7 7.7.6 1.4 1.1 2.8 1.6 4-1.8 0-8.1-.2-11.2-5.1-.8-1.3-2.1-1-2.1-1 3.2 7.7 12.3 7.5 14 7.6.8 2 1.5 3.6 1.8 4.5-.7 0-2.1-.3-3.7-1.7a7.11 7.11 0 0 0-5.1-1.9l-4 6.3s1.9 0 2.7-1.2l2.2-3.5c1.1.1 2.2.6 3.3 1.5 2.1 1.7 3.4 1.9 4.7 1.9 1.2.1 1.9-.3 1.9-.3s-2.4-5.6-4.9-11.7z')
 															]),
-														_List_fromArray(
-															[
-																A2(
-																$elm$svg$Svg$path,
-																_List_fromArray(
-																	[
-																		$elm$svg$Svg$Attributes$strokeLinecap('round'),
-																		$elm$svg$Svg$Attributes$strokeLinejoin('round'),
-																		$elm$svg$Svg$Attributes$d('M6 18 18 6M6 6l12 12')
-																	]),
-																_List_Nil)
-															]))
-													])),
-												A2(
-												$elm$html$Html$div,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$class('w-20 overflow-hidden')
-													]),
-												_List_fromArray(
-													[
-														A2(
-														$elm$svg$Svg$svg,
-														_List_fromArray(
-															[
-																$elm$svg$Svg$Attributes$class('w-12 rounded-md'),
-																$elm$svg$Svg$Attributes$version('1.1'),
-																$elm$svg$Svg$Attributes$id('Layer_1'),
-																$elm$svg$Svg$Attributes$x('0px'),
-																$elm$svg$Svg$Attributes$y('0px'),
-																$elm$svg$Svg$Attributes$viewBox('0 0 323.141 322.95'),
-																$elm$svg$Svg$Attributes$enableBackground('new 0 0 323.141 322.95'),
-																$elm$svg$Svg$Attributes$xmlSpace('preserve')
-															]),
-														_List_fromArray(
-															[
-																A2(
-																$elm$svg$Svg$g,
-																_List_Nil,
-																_List_fromArray(
-																	[
-																		A2(
-																		$elm$svg$Svg$polygon,
-																		_List_fromArray(
-																			[
-																				$elm$svg$Svg$Attributes$fill('#F0AD00'),
-																				$elm$svg$Svg$Attributes$points('161.649,152.782 231.514,82.916 91.783,82.916')
-																			]),
-																		_List_Nil),
-																		A2(
-																		$elm$svg$Svg$polygon,
-																		_List_fromArray(
-																			[
-																				$elm$svg$Svg$Attributes$fill('#7FD13B'),
-																				$elm$svg$Svg$Attributes$points('8.867,0 79.241,70.375 232.213,70.375 161.838,0')
-																			]),
-																		_List_Nil),
-																		A2(
-																		$elm$svg$Svg$rect,
-																		_List_fromArray(
-																			[
-																				$elm$svg$Svg$Attributes$fill('#7FD13B'),
-																				$elm$svg$Svg$Attributes$x('192.99'),
-																				$elm$svg$Svg$Attributes$y('107.392'),
-																				$elm$svg$Svg$Attributes$transform('matrix(0.7071 0.7071 -0.7071 0.7071 186.4727 -127.2386)'),
-																				$elm$svg$Svg$Attributes$width('107.676'),
-																				$elm$svg$Svg$Attributes$height('108.167')
-																			]),
-																		_List_Nil),
-																		A2(
-																		$elm$svg$Svg$polygon,
-																		_List_fromArray(
-																			[
-																				$elm$svg$Svg$Attributes$fill('#60B5CC'),
-																				$elm$svg$Svg$Attributes$points('323.298,143.724 323.298,0 179.573,0')
-																			]),
-																		_List_Nil),
-																		A2(
-																		$elm$svg$Svg$polygon,
-																		_List_fromArray(
-																			[
-																				$elm$svg$Svg$Attributes$fill('#5A6378'),
-																				$elm$svg$Svg$Attributes$points('152.781,161.649 0,8.868 0,314.432')
-																			]),
-																		_List_Nil),
-																		A2(
-																		$elm$svg$Svg$polygon,
-																		_List_fromArray(
-																			[
-																				$elm$svg$Svg$Attributes$fill('#F0AD00'),
-																				$elm$svg$Svg$Attributes$points('255.522,246.655 323.298,314.432 323.298,178.879')
-																			]),
-																		_List_Nil),
-																		A2(
-																		$elm$svg$Svg$polygon,
-																		_List_fromArray(
-																			[
-																				$elm$svg$Svg$Attributes$fill('#60B5CC'),
-																				$elm$svg$Svg$Attributes$points('161.649,170.517 8.869,323.298 314.43,323.298')
-																			]),
-																		_List_Nil)
-																	]))
-															]))
+														_List_Nil)
 													]))
 											])),
 										A2(
-										$elm$html$Html$h1,
+										$elm$html$Html$div,
 										_List_fromArray(
 											[
-												$elm$html$Html$Attributes$class('mt-10 text-center text-pretty text-3xl font-semibold tracking-tight text-indigo-600'),
 												A2($elm$html$Html$Attributes$style, 'color', '#e15a1d')
 											]),
 										_List_fromArray(
 											[
-												$elm$html$Html$text('Fun in Function'),
 												A2(
-												$elm$html$Html$span,
+												$elm$svg$Svg$svg,
 												_List_fromArray(
 													[
-														$elm$html$Html$Attributes$class('opacity-50')
+														$elm$svg$Svg$Attributes$fill('none'),
+														$elm$svg$Svg$Attributes$viewBox('0 0 24 24'),
+														$elm$svg$Svg$Attributes$strokeWidth('3'),
+														$elm$svg$Svg$Attributes$stroke('currentColor'),
+														$elm$svg$Svg$Attributes$class('size-6')
 													]),
 												_List_fromArray(
 													[
-														$elm$html$Html$text('al Programming')
+														A2(
+														$elm$svg$Svg$path,
+														_List_fromArray(
+															[
+																$elm$svg$Svg$Attributes$strokeLinecap('round'),
+																$elm$svg$Svg$Attributes$strokeLinejoin('round'),
+																$elm$svg$Svg$Attributes$d('M6 18 18 6M6 6l12 12')
+															]),
+														_List_Nil)
 													]))
 											])),
 										A2(
-										$elm$html$Html$figure,
+										$elm$html$Html$div,
 										_List_fromArray(
 											[
-												$elm$html$Html$Attributes$class('rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5 max-w-md mt-10')
+												$elm$html$Html$Attributes$class('w-20 overflow-hidden')
 											]),
 										_List_fromArray(
 											[
 												A2(
-												$elm$html$Html$blockquote,
+												$elm$svg$Svg$svg,
 												_List_fromArray(
 													[
-														$elm$html$Html$Attributes$class('text-gray-900')
+														$elm$svg$Svg$Attributes$class('w-12 rounded-md'),
+														$elm$svg$Svg$Attributes$version('1.1'),
+														$elm$svg$Svg$Attributes$id('Layer_1'),
+														$elm$svg$Svg$Attributes$x('0px'),
+														$elm$svg$Svg$Attributes$y('0px'),
+														$elm$svg$Svg$Attributes$viewBox('0 0 323.141 322.95'),
+														$elm$svg$Svg$Attributes$enableBackground('new 0 0 323.141 322.95'),
+														$elm$svg$Svg$Attributes$xmlSpace('preserve')
 													]),
 												_List_fromArray(
 													[
 														A2(
-														$elm$html$Html$p,
+														$elm$svg$Svg$g,
 														_List_Nil,
 														_List_fromArray(
 															[
-																$elm$html$Html$text('\"I love Elm. It really is a beautiful programming language in its simplicity and elegance. Even after 5 years of building web applications in Elm, I still find it a breath of fresh air.\"')
+																A2(
+																$elm$svg$Svg$polygon,
+																_List_fromArray(
+																	[
+																		$elm$svg$Svg$Attributes$fill('#F0AD00'),
+																		$elm$svg$Svg$Attributes$points('161.649,152.782 231.514,82.916 91.783,82.916')
+																	]),
+																_List_Nil),
+																A2(
+																$elm$svg$Svg$polygon,
+																_List_fromArray(
+																	[
+																		$elm$svg$Svg$Attributes$fill('#7FD13B'),
+																		$elm$svg$Svg$Attributes$points('8.867,0 79.241,70.375 232.213,70.375 161.838,0')
+																	]),
+																_List_Nil),
+																A2(
+																$elm$svg$Svg$rect,
+																_List_fromArray(
+																	[
+																		$elm$svg$Svg$Attributes$fill('#7FD13B'),
+																		$elm$svg$Svg$Attributes$x('192.99'),
+																		$elm$svg$Svg$Attributes$y('107.392'),
+																		$elm$svg$Svg$Attributes$transform('matrix(0.7071 0.7071 -0.7071 0.7071 186.4727 -127.2386)'),
+																		$elm$svg$Svg$Attributes$width('107.676'),
+																		$elm$svg$Svg$Attributes$height('108.167')
+																	]),
+																_List_Nil),
+																A2(
+																$elm$svg$Svg$polygon,
+																_List_fromArray(
+																	[
+																		$elm$svg$Svg$Attributes$fill('#60B5CC'),
+																		$elm$svg$Svg$Attributes$points('323.298,143.724 323.298,0 179.573,0')
+																	]),
+																_List_Nil),
+																A2(
+																$elm$svg$Svg$polygon,
+																_List_fromArray(
+																	[
+																		$elm$svg$Svg$Attributes$fill('#5A6378'),
+																		$elm$svg$Svg$Attributes$points('152.781,161.649 0,8.868 0,314.432')
+																	]),
+																_List_Nil),
+																A2(
+																$elm$svg$Svg$polygon,
+																_List_fromArray(
+																	[
+																		$elm$svg$Svg$Attributes$fill('#F0AD00'),
+																		$elm$svg$Svg$Attributes$points('255.522,246.655 323.298,314.432 323.298,178.879')
+																	]),
+																_List_Nil),
+																A2(
+																$elm$svg$Svg$polygon,
+																_List_fromArray(
+																	[
+																		$elm$svg$Svg$Attributes$fill('#60B5CC'),
+																		$elm$svg$Svg$Attributes$points('161.649,170.517 8.869,323.298 314.43,323.298')
+																	]),
+																_List_Nil)
 															]))
-													])),
+													]))
+											]))
+									])),
+								A2(
+								$elm$html$Html$h1,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('mt-10 text-center text-pretty text-3xl font-semibold tracking-tight text-indigo-600'),
+										A2($elm$html$Html$Attributes$style, 'color', '#e15a1d')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Fun in Function'),
+										A2(
+										$elm$html$Html$span,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$class('opacity-50')
+											]),
+										_List_fromArray(
+											[
+												$elm$html$Html$text('al Programming')
+											]))
+									])),
+								A2(
+								$elm$html$Html$figure,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5 max-w-md mt-10')
+									]),
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$blockquote,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$class('text-gray-900')
+											]),
+										_List_fromArray(
+											[
 												A2(
-												$elm$html$Html$figcaption,
+												$elm$html$Html$p,
+												_List_Nil,
 												_List_fromArray(
 													[
-														$elm$html$Html$Attributes$class('mt-6 flex items-center gap-x-4')
+														$elm$html$Html$text('\"I love building with Elm. It really is a beautiful programming language in its simplicity and elegance. Even after 5 years of building web applications in Elm, I still find it a breath of fresh air.\"')
+													]))
+											])),
+										A2(
+										$elm$html$Html$figcaption,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$class('mt-6 flex items-center gap-x-4')
+											]),
+										_List_fromArray(
+											[
+												A2(
+												$elm$html$Html$img,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('size-10 border-2 border-gray-400 rounded-full bg-gray-50'),
+														$elm$html$Html$Attributes$src('luis.jpg')
 													]),
+												_List_Nil),
+												A2(
+												$elm$html$Html$div,
+												_List_Nil,
 												_List_fromArray(
 													[
-														A2(
-														$elm$html$Html$img,
-														_List_fromArray(
-															[
-																$elm$html$Html$Attributes$class('size-10 border-2 border-gray-400 rounded-full bg-gray-50'),
-																$elm$html$Html$Attributes$src('luis.jpg')
-															]),
-														_List_Nil),
 														A2(
 														$elm$html$Html$div,
-														_List_Nil,
 														_List_fromArray(
 															[
-																A2(
-																$elm$html$Html$div,
-																_List_fromArray(
-																	[
-																		$elm$html$Html$Attributes$class('font-semibold')
-																	]),
-																_List_fromArray(
-																	[
-																		$elm$html$Html$text('Luis Vega')
-																	])),
-																A2(
-																$elm$html$Html$div,
-																_List_fromArray(
-																	[
-																		$elm$html$Html$Attributes$class('text-gray-600')
-																	]),
-																_List_fromArray(
-																	[
-																		$elm$html$Html$text('@luiscvega')
-																	]))
+																$elm$html$Html$Attributes$class('font-semibold')
+															]),
+														_List_fromArray(
+															[
+																$elm$html$Html$text('Luis Vega')
+															])),
+														A2(
+														$elm$html$Html$div,
+														_List_fromArray(
+															[
+																$elm$html$Html$Attributes$class('text-gray-600')
+															]),
+														_List_fromArray(
+															[
+																$elm$html$Html$text('@luiscvega')
 															]))
 													]))
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$class('mt-10 w-full max-w-md text-base/7 text-gray-700 font-mono')
-											]),
-										A2(
-											$elm$core$List$map,
-											function (y) {
-												return A2(
-													$elm$html$Html$div,
-													_List_fromArray(
-														[
-															$elm$html$Html$Attributes$class('flex justify-center')
-														]),
-													A2(
-														$elm$core$List$map,
-														function (x) {
-															return A2(
+											]))
+									])),
+								A2(
+								$elm$html$Html$div,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('mt-10 w-full max-w-md text-base/7 text-gray-700 font-mono')
+									]),
+								A2(
+									$elm$core$List$map,
+									function (y) {
+										return A2(
+											$elm$html$Html$div,
+											_List_fromArray(
+												[
+													$elm$html$Html$Attributes$class('flex justify-center')
+												]),
+											A2(
+												$elm$core$List$map,
+												function (x) {
+													return A2(
+														$elm$html$Html$div,
+														_List_fromArray(
+															[
+																$elm$html$Html$Attributes$class('aspect-square w-full m-0.5 rounded-md flex items-center justify-center text-3xl'),
+																A2($elm$html$Html$Attributes$style, 'background-color', 'rgba(225, 90, 29, 0.3)')
+															]),
+														_List_fromArray(
+															[
+																_Utils_eq(
+																model.position,
+																_Utils_Tuple2(x, y)) ? A2(
 																$elm$html$Html$div,
 																_List_fromArray(
 																	[
-																		$elm$html$Html$Attributes$class('aspect-square w-full m-0.5 rounded-md flex items-center justify-center text-3xl'),
-																		A2($elm$html$Html$Attributes$style, 'background-color', 'rgba(225, 90, 29, 0.3)')
+																		$elm$html$Html$Attributes$class(
+																		function () {
+																			var _v0 = model.direction;
+																			switch (_v0.$) {
+																				case 'North':
+																					return 'rotate-0';
+																				case 'East':
+																					return 'rotate-90';
+																				case 'South':
+																					return 'rotate-180';
+																				default:
+																					return '-rotate-90';
+																			}
+																		}())
 																	]),
 																_List_fromArray(
 																	[
-																		_Utils_eq(
-																		model.position,
-																		_Utils_Tuple2(x, y)) ? A2(
-																		$elm$html$Html$div,
+																		A2(
+																		$elm$html$Html$img,
 																		_List_fromArray(
 																			[
-																				$elm$html$Html$Attributes$class(
-																				function () {
-																					var _v0 = model.direction;
-																					switch (_v0.$) {
-																						case 'North':
-																							return 'rotate-0';
-																						case 'East':
-																							return 'rotate-90';
-																						case 'South':
-																							return 'rotate-180';
-																						default:
-																							return '-rotate-90';
-																					}
-																				}())
+																				$elm$html$Html$Attributes$src('bellroy.png')
 																			]),
-																		_List_fromArray(
-																			[
-																				A2(
-																				$elm$html$Html$img,
-																				_List_fromArray(
-																					[
-																						$elm$html$Html$Attributes$src('bellroy.png')
-																					]),
-																				_List_Nil)
-																			])) : $elm$html$Html$text('')
-																	]));
-														},
-														A2($elm$core$List$range, 0, model.dimensions.width - 1)));
-											},
-											A2($elm$core$List$range, 0, model.dimensions.height - 1))),
-										A2(
+																		_List_Nil)
+																	])) : $elm$html$Html$text('')
+															]));
+												},
+												A2($elm$core$List$range, 0, model.dimensions.width - 1)));
+									},
+									A2($elm$core$List$range, 0, model.dimensions.height - 1))),
+								A2(
+								$elm$html$Html$div,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('mt-6 space-x-3')
+									]),
+								_List_fromArray(
+									[
+										_Utils_eq(
+										model.dimensions,
+										{height: 2, width: 2}) ? A2(
 										$elm$html$Html$div,
 										_List_fromArray(
 											[
-												$elm$html$Html$Attributes$class('mt-6 space-x-3')
+												$elm$html$Html$Attributes$class('inline-block rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 bg-gray-200')
 											]),
 										_List_fromArray(
 											[
-												_Utils_eq(
-												model.dimensions,
-												{height: 2, width: 2}) ? A2(
-												$elm$html$Html$div,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$class('inline-block rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 bg-gray-200')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('Size '),
-														A2(
-														$elm$svg$Svg$svg,
-														_List_fromArray(
-															[
-																$elm$svg$Svg$Attributes$viewBox('0 0 16 16'),
-																$elm$svg$Svg$Attributes$fill('currentColor'),
-																$elm$svg$Svg$Attributes$class('size-4 inline')
-															]),
-														_List_fromArray(
-															[
-																A2(
-																$elm$svg$Svg$path,
-																_List_fromArray(
-																	[
-																		$elm$svg$Svg$Attributes$fillRule('evenodd'),
-																		$elm$svg$Svg$Attributes$d('M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm4-7a.75.75 0 0 0-.75-.75h-6.5a.75.75 0 0 0 0 1.5h6.5A.75.75 0 0 0 12 8Z'),
-																		$elm$svg$Svg$Attributes$clipRule('evenodd')
-																	]),
-																_List_Nil)
-															]))
-													])) : A2(
-												$elm$html$Html$button,
-												_List_fromArray(
-													[
-														$elm$html$Html$Events$onClick(
-														$author$project$Main$DimensionsChanged(-1)),
-														$elm$html$Html$Attributes$class('rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('Size '),
-														A2(
-														$elm$svg$Svg$svg,
-														_List_fromArray(
-															[
-																$elm$svg$Svg$Attributes$viewBox('0 0 16 16'),
-																$elm$svg$Svg$Attributes$fill('currentColor'),
-																$elm$svg$Svg$Attributes$class('size-4 inline')
-															]),
-														_List_fromArray(
-															[
-																A2(
-																$elm$svg$Svg$path,
-																_List_fromArray(
-																	[
-																		$elm$svg$Svg$Attributes$fillRule('evenodd'),
-																		$elm$svg$Svg$Attributes$d('M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm4-7a.75.75 0 0 0-.75-.75h-6.5a.75.75 0 0 0 0 1.5h6.5A.75.75 0 0 0 12 8Z'),
-																		$elm$svg$Svg$Attributes$clipRule('evenodd')
-																	]),
-																_List_Nil)
-															]))
-													])),
+												$elm$html$Html$text('Size '),
 												A2(
-												$elm$html$Html$button,
+												$elm$svg$Svg$svg,
 												_List_fromArray(
 													[
-														$elm$html$Html$Events$onClick(
-														$author$project$Main$DimensionsChanged(1)),
-														$elm$html$Html$Attributes$class('rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50')
+														$elm$svg$Svg$Attributes$viewBox('0 0 16 16'),
+														$elm$svg$Svg$Attributes$fill('currentColor'),
+														$elm$svg$Svg$Attributes$class('size-4 inline')
 													]),
 												_List_fromArray(
 													[
-														$elm$html$Html$text('Size '),
 														A2(
-														$elm$svg$Svg$svg,
+														$elm$svg$Svg$path,
 														_List_fromArray(
 															[
-																$elm$svg$Svg$Attributes$viewBox('0 0 16 16'),
-																$elm$svg$Svg$Attributes$fill('currentColor'),
-																$elm$svg$Svg$Attributes$class('size-4 inline')
+																$elm$svg$Svg$Attributes$fillRule('evenodd'),
+																$elm$svg$Svg$Attributes$d('M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm4-7a.75.75 0 0 0-.75-.75h-6.5a.75.75 0 0 0 0 1.5h6.5A.75.75 0 0 0 12 8Z'),
+																$elm$svg$Svg$Attributes$clipRule('evenodd')
 															]),
+														_List_Nil)
+													]))
+											])) : A2(
+										$elm$html$Html$button,
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$DimensionsChanged(-1)),
+												$elm$html$Html$Attributes$class('rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50')
+											]),
+										_List_fromArray(
+											[
+												$elm$html$Html$text('Size '),
+												A2(
+												$elm$svg$Svg$svg,
+												_List_fromArray(
+													[
+														$elm$svg$Svg$Attributes$viewBox('0 0 16 16'),
+														$elm$svg$Svg$Attributes$fill('currentColor'),
+														$elm$svg$Svg$Attributes$class('size-4 inline')
+													]),
+												_List_fromArray(
+													[
+														A2(
+														$elm$svg$Svg$path,
 														_List_fromArray(
 															[
-																A2(
-																$elm$svg$Svg$path,
-																_List_fromArray(
-																	[
-																		$elm$svg$Svg$Attributes$fillRule('evenodd'),
-																		$elm$svg$Svg$Attributes$d('M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm.75-10.25v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 1.5 0Z'),
-																		$elm$svg$Svg$Attributes$clipRule('evenodd')
-																	]),
-																_List_Nil)
-															]))
+																$elm$svg$Svg$Attributes$fillRule('evenodd'),
+																$elm$svg$Svg$Attributes$d('M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm4-7a.75.75 0 0 0-.75-.75h-6.5a.75.75 0 0 0 0 1.5h6.5A.75.75 0 0 0 12 8Z'),
+																$elm$svg$Svg$Attributes$clipRule('evenodd')
+															]),
+														_List_Nil)
 													]))
 											])),
 										A2(
-										$elm$html$Html$div,
+										$elm$html$Html$button,
 										_List_fromArray(
 											[
-												$elm$html$Html$Attributes$class('mt-6 space-x-3')
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$DimensionsChanged(1)),
+												$elm$html$Html$Attributes$class('rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50')
 											]),
 										_List_fromArray(
 											[
+												$elm$html$Html$text('Size '),
 												A2(
-												$elm$html$Html$button,
+												$elm$svg$Svg$svg,
 												_List_fromArray(
 													[
-														$elm$html$Html$Events$onClick(
-														$author$project$Main$KeyPressed('h')),
-														$elm$html$Html$Attributes$class('rounded-md bg-white px-3.5 py-2.5 text-xl font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50')
+														$elm$svg$Svg$Attributes$viewBox('0 0 16 16'),
+														$elm$svg$Svg$Attributes$fill('currentColor'),
+														$elm$svg$Svg$Attributes$class('size-4 inline')
 													]),
 												_List_fromArray(
 													[
-														$elm$html$Html$text('H')
-													])),
-												A2(
-												$elm$html$Html$button,
-												_List_fromArray(
-													[
-														$elm$html$Html$Events$onClick(
-														$author$project$Main$KeyPressed('j')),
-														$elm$html$Html$Attributes$class('rounded-md bg-white px-3.5 py-2.5 text-xl font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('J')
-													])),
-												A2(
-												$elm$html$Html$button,
-												_List_fromArray(
-													[
-														$elm$html$Html$Events$onClick(
-														$author$project$Main$KeyPressed('k')),
-														$elm$html$Html$Attributes$class('rounded-md bg-white px-3.5 py-2.5 text-xl font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('K')
-													])),
-												A2(
-												$elm$html$Html$button,
-												_List_fromArray(
-													[
-														$elm$html$Html$Events$onClick(
-														$author$project$Main$KeyPressed('l')),
-														$elm$html$Html$Attributes$class('rounded-md bg-white px-3.5 py-2.5 text-xl font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('L')
+														A2(
+														$elm$svg$Svg$path,
+														_List_fromArray(
+															[
+																$elm$svg$Svg$Attributes$fillRule('evenodd'),
+																$elm$svg$Svg$Attributes$d('M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm.75-10.25v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 1.5 0Z'),
+																$elm$svg$Svg$Attributes$clipRule('evenodd')
+															]),
+														_List_Nil)
 													]))
+											]))
+									])),
+								A2(
+								$elm$html$Html$div,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('mt-6 space-x-3')
+									]),
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$button,
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$KeyPressed('h')),
+												$elm$html$Html$Attributes$class('rounded-md bg-white px-3.5 py-2.5 text-xl font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50')
+											]),
+										_List_fromArray(
+											[
+												$elm$html$Html$text('H')
 											])),
 										A2(
-										$elm$html$Html$div,
+										$elm$html$Html$button,
 										_List_fromArray(
 											[
-												$elm$html$Html$Attributes$class('mt-6 text-md text-gray-700 text-center space-y-3')
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$KeyPressed('j')),
+												$elm$html$Html$Attributes$class('rounded-md bg-white px-3.5 py-2.5 text-xl font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50')
 											]),
 										_List_fromArray(
 											[
-												A2(
-												$elm$html$Html$p,
-												_List_Nil,
-												_List_fromArray(
-													[
-														$elm$html$Html$text('Press 🄹 to move forward.')
-													])),
-												A2(
-												$elm$html$Html$p,
-												_List_Nil,
-												_List_fromArray(
-													[
-														$elm$html$Html$text('Press 🄺 to move backward.')
-													])),
-												A2(
-												$elm$html$Html$p,
-												_List_Nil,
-												_List_fromArray(
-													[
-														$elm$html$Html$text('Press 🄷  to turn left.')
-													])),
-												A2(
-												$elm$html$Html$p,
-												_List_Nil,
-												_List_fromArray(
-													[
-														$elm$html$Html$text('Press 🄻  to turn right. ')
-													]))
+												$elm$html$Html$text('J')
+											])),
+										A2(
+										$elm$html$Html$button,
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$KeyPressed('k')),
+												$elm$html$Html$Attributes$class('rounded-md bg-white px-3.5 py-2.5 text-xl font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50')
+											]),
+										_List_fromArray(
+											[
+												$elm$html$Html$text('K')
+											])),
+										A2(
+										$elm$html$Html$button,
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$KeyPressed('l')),
+												$elm$html$Html$Attributes$class('rounded-md bg-white px-3.5 py-2.5 text-xl font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50')
+											]),
+										_List_fromArray(
+											[
+												$elm$html$Html$text('L')
+											]))
+									])),
+								A2(
+								$elm$html$Html$div,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('mt-6 text-md text-gray-700 text-center space-y-3')
+									]),
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$p,
+										_List_Nil,
+										_List_fromArray(
+											[
+												$elm$html$Html$text('Press 🄹 to move forward.')
+											])),
+										A2(
+										$elm$html$Html$p,
+										_List_Nil,
+										_List_fromArray(
+											[
+												$elm$html$Html$text('Press 🄺 to move backward.')
+											])),
+										A2(
+										$elm$html$Html$p,
+										_List_Nil,
+										_List_fromArray(
+											[
+												$elm$html$Html$text('Press 🄷  to turn left.')
+											])),
+										A2(
+										$elm$html$Html$p,
+										_List_Nil,
+										_List_fromArray(
+											[
+												$elm$html$Html$text('Press 🄻  to turn right. ')
 											]))
 									]))
 							]))
