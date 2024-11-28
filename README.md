@@ -5,8 +5,9 @@ This is a small coding exercise for the front end developer position at Bellroy.
 ## Getting Started
 
 ```bash
-$ tar -xvzf bellroy.tar.gz bellroy
-$ cd bellroy
+$ wget https://github.com/luiscvega/luiscvega.github.io/archive/refs/heads/main.zip
+$ unzip main.zip
+$ cd luiscvega.github.io-main
 $ open index.html
 ```
 
