@@ -1,0 +1,21 @@
+---
+const { category } = Astro.props;
+---
+
+<div id="product-list" data-category={category}></div>
+
+<script is:inline src="/product-list.js"></script>
+<script>
+  import { products } from "../products.js";
+
+  const element = document.getElementById("product-list");
+
+  var app = Elm.ProductList.init({
+    flags: element.dataset.category,
+    node: element,
+  });
+
+  products.listen(function (asdf) {
+    app.ports.filtersChanged.send("asdf");
+  });
+</script>

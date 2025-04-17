@@ -1,0 +1,1 @@
+import{p as e}from"./products.BacfDG3_.js";const t=document.getElementById("product-list");var s=Elm.ProductList.init({flags:t.dataset.category,node:t});e.listen(function(d){s.ports.filtersChanged.send("asdf")});

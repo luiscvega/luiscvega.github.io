@@ -1,0 +1,15 @@
+<div id="category-filters"></div>
+
+<script is:inline src="/category-filters.js"></script>
+<script>
+  import { products } from "../products.js";
+
+  const app = Elm.CategoryFilters.init({
+    flags: "",
+    node: document.getElementById("category-filters"),
+  });
+
+  app.ports.filtersChanged.subscribe(function (message) {
+    products.set(Date());
+  });
+</script>
