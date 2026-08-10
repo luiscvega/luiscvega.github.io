@@ -1,0 +1,470 @@
+const PLANE_ICON = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3 3 10.5l7.2 2.3L13 20l3-6 5-11Z"/><path d="M10.5 12.8 21 3"/></svg>';
+const TRAIN_ICON = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="13" rx="4"/><path d="M5 12h14M8 16l-2.5 4M16 16l2.5 4"/><circle cx="9" cy="9" r="0.7" fill="currentColor" stroke="none"/><circle cx="15" cy="9" r="0.7" fill="currentColor" stroke="none"/></svg>';
+// Icon paths adapted from Lucide (ISC License) — navigation, utensils, camera.
+const TRANSIT_ICON = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>';
+const MEAL_ICON = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>';
+const SIGHT_ICON = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3"/></svg>';
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function todayISO() {
+  const d = new Date();
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+function parseISO(s) { return new Date(s + 'T00:00:00'); }
+
+function daysBetween(a, b) { return Math.round((parseISO(a) - parseISO(b)) / 86400000); }
+
+function addDaysISO(iso, n) {
+  const dt = parseISO(iso);
+  dt.setDate(dt.getDate() + n);
+  return `${dt.getFullYear()}-${pad(dt.getMonth() + 1)}-${pad(dt.getDate())}`;
+}
+
+function formatShort(iso) {
+  return parseISO(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+function formatWeekday(iso) {
+  return parseISO(iso).toLocaleDateString('en-US', { weekday: 'short' }).slice(0, 3).toUpperCase();
+}
+
+function clampToTrip(date) {
+  if (date < TRIP.start) return TRIP.start;
+  if (date > TRIP.end) return TRIP.end;
+  return date;
+}
+
+function buildAllDays() {
+  const days = [];
+  let d = TRIP.start;
+  while (d <= TRIP.end) {
+    days.push(d);
+    d = addDaysISO(d, 1);
+  }
+  return days;
+}
+
+const ALL_DAYS = buildAllDays();
+
+function legsForDate(date) {
+  return TRIP.entries.filter(e => e.type === 'leg' && (e.date === date || e.arriveDate === date));
+}
+
+function weddingEventsForDate(date) {
+  const events = [];
+  TRIP.entries.forEach(e => {
+    if (e.wedding) e.wedding.events.forEach(ev => { if (ev.date === date) events.push(ev); });
+  });
+  return events;
+}
+
+function stayForDate(date) {
+  const matches = TRIP.entries.filter(e => e.type === 'stay' && date >= e.start && date <= e.end);
+  if (matches.length <= 1) return matches[0] || null;
+  return matches.find(m => m.start === date) || matches[0];
+}
+
+function dayIndicators(date) {
+  const travel = legsForDate(date).length > 0;
+  const wedding = weddingEventsForDate(date).length > 0;
+  return { travel, wedding };
+}
+
+/* ---------- Time parsing (for sorting the day's agenda) ---------- */
+
+function parseTimeLabel(label) {
+  if (!label) return 9999;
+  const s = label.trim();
+  if (/^TBD$/i.test(s)) return -1;
+  if (/^Breakfast\b/i.test(s)) return 7 * 60;
+  if (/^Morning\b/i.test(s)) return 8 * 60;
+  if (/^Lunch\b/i.test(s)) return 12 * 60;
+  if (/^Afternoon\b/i.test(s)) return 13 * 60;
+  if (/^Evening\b/i.test(s)) return 18 * 60;
+  if (/^Dinner\b/i.test(s)) return 19 * 60;
+  const range = s.match(/(\d{1,2})\s*[-–]\s*(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/i);
+  if (range) {
+    let h = parseInt(range[1], 10) % 12;
+    if (/pm/i.test(range[4])) h += 12;
+    return h * 60;
+  }
+  const single = s.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/i);
+  if (single) {
+    let h = parseInt(single[1], 10) % 12;
+    if (/pm/i.test(single[3])) h += 12;
+    const min = single[2] ? parseInt(single[2], 10) : 0;
+    return h * 60 + min;
+  }
+  if (/late/i.test(s)) return 23 * 60;
+  return 9999;
+}
+
+/* ---------- Card templates ---------- */
+
+function agendaRow(timeHtml, cardHtml) {
+  return `<div class="agenda-row"><div class="agenda-time">${timeHtml}</div>${cardHtml}</div>`;
+}
+
+function legTimeHTML(e) {
+  const overnight = e.arriveDate && e.arriveDate !== e.date;
+  return `
+    <span class="a-value">${e.depart}</span>
+    <span class="a-rule"></span>
+    <span class="a-value a-value--sub">${e.arrive || 'TBD'}</span>
+    ${overnight ? `<span class="a-sub">+1</span>` : ''}`;
+}
+
+function isConnectionLeg(e) {
+  const arrival = e.arriveDate || e.date;
+  return TRIP.entries.some(o => o.type === 'leg' && o.from.code === e.to.code && o.date === arrival);
+}
+
+function stampLabel(e) {
+  const city = e.to.city.split(' · ')[0];
+  const date = formatShort(e.arriveDate || e.date);
+  return `${city.toUpperCase()} · ${date.toUpperCase()}`;
+}
+
+function legCardHTML(e) {
+  const icon = e.mode === 'flight' ? PLANE_ICON : TRAIN_ICON;
+  const tag = e.mode === 'train' ? `<span class="tag">${e.trainName}</span>` : '';
+  const stamp = !isConnectionLeg(e) ? ` data-stamp="${stampLabel(e)}"` : '';
+  return `
+    <div class="card leg-card"${stamp}>
+      ${tag}
+      <div class="route">
+        <span class="code">${e.from.code}</span>
+        <span class="route-icon">${icon}</span>
+        <span class="code">${e.to.code}</span>
+      </div>
+      <p class="route-cities">${e.from.city} &rarr; ${e.to.city}</p>
+      ${e.flightNumber ? `<p class="flight-meta">${e.flightNumber} · ${e.airline} · ${e.aircraft}</p>` : ''}
+      ${e.baggage ? `<p class="flight-meta muted">${e.baggage}</p>` : ''}
+    </div>`;
+}
+
+function weddingHeaderHTML(couple) {
+  return `
+    <div class="wedding-header">
+      <p class="wedding-monogram">${couple}</p>
+      <p class="wedding-kicker">Wedding Weekend</p>
+    </div>`;
+}
+
+function weddingEventCardHTML(ev) {
+  return `
+    <div class="card wevent-card">
+      <p class="name">${ev.name}</p>
+      <p class="venue">${ev.venue}</p>
+      <p class="addr">${ev.address}</p>
+      <div class="dress"><strong>Dress —</strong> ${ev.dress}</div>
+      <p class="note">${ev.note}</p>
+    </div>`;
+}
+
+function planCardHTML(plan) {
+  const cls = plan.kind === 'meal' ? 'plan-meal' : plan.kind === 'transit' ? 'plan-transit' : 'plan-activity';
+  const icon = plan.kind === 'meal' ? MEAL_ICON : plan.kind === 'transit' ? TRANSIT_ICON : SIGHT_ICON;
+  return `
+    <div class="card plan-card ${cls}">
+      <p class="plan-title"><span class="plan-icon">${icon}</span>${plan.title || 'Plan for today'}</p>
+      ${plan.notes ? `<p class="plan-notes">${plan.notes}</p>` : ''}
+    </div>`;
+}
+
+function emptyDayHTML() {
+  return `<div class="day-open"><span class="day-open-rule"></span><span class="day-open-mark">&#9670;</span><span class="day-open-rule"></span></div>`;
+}
+
+/* ---------- Day picker ---------- */
+
+function renderDayPicker(selected) {
+  let html = '';
+  let lastMonth = null;
+  const today = todayISO();
+  for (const date of ALL_DAYS) {
+    const d = parseISO(date);
+    if (d.getMonth() !== lastMonth) {
+      html += `<span class="month-tick">${d.toLocaleDateString('en-US', { month: 'short' })}</span>`;
+      lastMonth = d.getMonth();
+    }
+    const { travel, wedding } = dayIndicators(date);
+    const classes = ['day-pill'];
+    if (date === selected) classes.push('selected');
+    if (date === today) classes.push('is-today');
+    const dotClass = wedding ? 'wedding' : travel ? 'travel' : 'none';
+    html += `<button class="${classes.join(' ')}" data-date="${date}" aria-pressed="${date === selected}">
+        <span class="dow">${formatWeekday(date)}</span>
+        <span class="num">${d.getDate()}</span>
+        <span class="dot ${dotClass}"></span>
+      </button>`;
+  }
+  document.getElementById('daypicker').innerHTML = html;
+}
+
+/* ---------- Day detail ---------- */
+
+function dayHeadHTML(date) {
+  const full = parseISO(date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  const dayNum = daysBetween(date, TRIP.start) + 1;
+  const totalDays = daysBetween(TRIP.end, TRIP.start) + 1;
+  const stay = stayForDate(date);
+  const badge = date === todayISO() ? '<span class="today-badge">Today</span>' : '';
+  return `
+    <div class="day-head">
+      <p class="day-head-date">${full}${badge}</p>
+      <p class="day-head-sub">Day ${dayNum} of ${totalDays}${stay ? ' · ' + stay.city : ''}</p>
+    </div>`;
+}
+
+const DAY_MAP_POINTS = {};
+
+function mapTriggerHTML(date, points) {
+  if (!points.length) return '';
+  DAY_MAP_POINTS[date] = points;
+  const count = points.length === 1 ? '1 stop' : `${points.length} stops`;
+  return `<button class="map-trigger" data-date="${date}">View on map &middot; ${count}</button>`;
+}
+
+function dayPanelHTML(date) {
+  const legs = legsForDate(date);
+  const weddingEvents = weddingEventsForDate(date);
+  const plans = (TRIP.days && TRIP.days[date]) || [];
+
+  const items = [];
+
+  legs.forEach(e => {
+    items.push({ sort: parseTimeLabel(e.depart), html: agendaRow(legTimeHTML(e), legCardHTML(e)) });
+  });
+
+  if (weddingEvents.length) {
+    const couple = TRIP.entries.find(e => e.wedding).wedding.couple;
+    const sorted = [...weddingEvents].sort((a, b) => parseTimeLabel(a.time) - parseTimeLabel(b.time));
+    let html = weddingHeaderHTML(couple);
+    sorted.forEach(ev => {
+      html += agendaRow(`<span class="a-value">${ev.time}</span>`, weddingEventCardHTML(ev));
+    });
+    items.push({ sort: parseTimeLabel(sorted[0].time), html });
+  }
+
+  plans.forEach(plan => {
+    const timeHtml = plan.time ? `<span class="a-value">${plan.time}</span>` : '';
+    items.push({ sort: plan.time ? parseTimeLabel(plan.time) : 9999, html: agendaRow(timeHtml, planCardHTML(plan)) });
+  });
+
+  items.sort((a, b) => a.sort - b.sort);
+
+  let inner = dayHeadHTML(date);
+  if (items.length) {
+    items.forEach(it => { inner += it.html; });
+  } else {
+    inner += emptyDayHTML();
+  }
+
+  const planPoints = plans
+    .filter(p => p.coords)
+    .slice()
+    .sort((a, b) => parseTimeLabel(a.time) - parseTimeLabel(b.time))
+    .map(p => ({ coords: p.coords, title: p.title, address: p.address, kind: p.kind }));
+
+  const points = [];
+  const stay = stayForDate(date);
+  if (stay && stay.coords && planPoints.length) {
+    points.push({ coords: stay.coords, title: 'Home base', address: stay.address, kind: 'stay' });
+  }
+  points.push(...planPoints);
+
+  inner += mapTriggerHTML(date, points);
+
+  return `<section class="day-panel" data-date="${date}">${inner}</section>`;
+}
+
+function renderDayPanels() {
+  document.getElementById('daydetail').innerHTML = ALL_DAYS.map(dayPanelHTML).join('');
+}
+
+function tripMarkerIcon(kind, number) {
+  const color = kind === 'meal' ? 'var(--clay)' : kind === 'stay' ? 'var(--charcoal)' : 'var(--brass)';
+  return L.divIcon({
+    className: 'trip-marker',
+    html: `<span class="trip-marker-num" style="background:${color}">${number}</span>`,
+    iconSize: [26, 26],
+    iconAnchor: [13, 13],
+  });
+}
+
+function directionsURL(point) {
+  const query = point.address || `${point.coords[0]},${point.coords[1]}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
+let fullMap = null;
+let mapMarkers = [];
+
+function ensureFullMap() {
+  if (fullMap) return fullMap;
+  fullMap = L.map('map-full', { zoomControl: true, attributionControl: true });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    subdomains: 'abcd',
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+  }).addTo(fullMap);
+  return fullMap;
+}
+
+function openDayMap(date) {
+  const points = DAY_MAP_POINTS[date];
+  if (!points || !points.length) return;
+
+  document.getElementById('map-overlay-title').textContent = parseISO(date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  document.getElementById('map-overlay').classList.add('open');
+
+  const map = ensureFullMap();
+  mapMarkers.forEach(m => m.remove());
+  mapMarkers = points.map((point, i) => {
+    const marker = L.marker(point.coords, { icon: tripMarkerIcon(point.kind, i + 1) }).addTo(map);
+    marker.bindPopup(`
+      <p class="map-pop-title">${point.title}</p>
+      ${point.address ? `<p class="map-pop-addr">${point.address}</p>` : ''}
+      <a class="map-pop-link" href="${directionsURL(point)}" target="_blank" rel="noopener">Directions &rarr;</a>`);
+    return marker;
+  });
+
+  requestAnimationFrame(() => {
+    map.invalidateSize();
+    if (points.length === 1) {
+      map.setView(points[0].coords, 15);
+    } else {
+      map.fitBounds(L.latLngBounds(points.map(p => p.coords)), { padding: [30, 30] });
+    }
+  });
+}
+
+function closeDayMap() {
+  document.getElementById('map-overlay').classList.remove('open');
+}
+
+function setupMapOverlay() {
+  document.getElementById('daydetail').addEventListener('click', (e) => {
+    const btn = e.target.closest('.map-trigger');
+    if (btn) openDayMap(btn.dataset.date);
+  });
+  document.getElementById('map-close').addEventListener('click', closeDayMap);
+}
+
+/* ---------- Wiring ---------- */
+
+let selectedDate = null;
+
+function dayIndex(date) { return ALL_DAYS.indexOf(date); }
+
+function updateDayPickerSelection(date) {
+  document.querySelectorAll('.day-pill').forEach(btn => {
+    const active = btn.dataset.date === date;
+    btn.classList.toggle('selected', active);
+    btn.setAttribute('aria-pressed', String(active));
+    if (active) btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  });
+}
+
+function setSelected(date) {
+  if (date === selectedDate) return;
+  selectedDate = date;
+  updateDayPickerSelection(date);
+}
+
+function goToDay(date) {
+  const idx = dayIndex(date);
+  if (idx < 0) return;
+  const el = document.getElementById('daydetail');
+  el.scrollTo({ left: idx * el.clientWidth, behavior: 'auto' });
+  setSelected(date);
+}
+
+let scrollSettleTimer = null;
+
+function onDayDetailScroll() {
+  const el = document.getElementById('daydetail');
+  clearTimeout(scrollSettleTimer);
+  scrollSettleTimer = setTimeout(() => {
+    const idx = Math.round(el.scrollLeft / el.clientWidth);
+    const date = ALL_DAYS[idx];
+    if (date) setSelected(date);
+  }, 100);
+}
+
+function setupDayPicker() {
+  document.getElementById('daypicker').addEventListener('click', (e) => {
+    const btn = e.target.closest('.day-pill');
+    if (btn) goToDay(btn.dataset.date);
+  });
+}
+
+function setupQuickNav() {
+  document.querySelectorAll('.quicknav button[data-jump]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const jump = btn.dataset.jump;
+      if (jump === 'today') { goToDay(clampToTrip(todayISO())); return; }
+      if (jump === 'wedding') {
+        const stay = TRIP.entries.find(e => e.wedding);
+        if (stay) goToDay(stay.wedding.events[0].date);
+        return;
+      }
+      const entry = TRIP.entries.find(e => e.id === jump);
+      if (entry) goToDay(entry.start);
+    });
+  });
+}
+
+async function copyTextToClipboard(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  const ok = document.execCommand('copy');
+  document.body.removeChild(textarea);
+  if (!ok) throw new Error('copy command failed');
+}
+
+function setupCopyItinerary() {
+  const btn = document.getElementById('copy-itinerary');
+  if (!btn) return;
+  const label = btn.textContent;
+  btn.addEventListener('click', async () => {
+    try {
+      const res = await fetch('itinerary.csv');
+      if (!res.ok) throw new Error('fetch failed');
+      const csv = await res.text();
+      await copyTextToClipboard(csv);
+      btn.textContent = 'Copied!';
+    } catch (err) {
+      btn.textContent = 'Copy Failed';
+    }
+    setTimeout(() => { btn.textContent = label; }, 1800);
+  });
+}
+
+function init() {
+  const initial = clampToTrip(todayISO());
+  renderDayPicker(initial);
+  renderDayPanels();
+  setupDayPicker();
+  setupQuickNav();
+  setupCopyItinerary();
+  setupMapOverlay();
+  document.getElementById('daydetail').addEventListener('scroll', onDayDetailScroll, { passive: true });
+  window.addEventListener('resize', () => goToDay(selectedDate));
+  selectedDate = initial;
+  goToDay(initial);
+}
+
+init();

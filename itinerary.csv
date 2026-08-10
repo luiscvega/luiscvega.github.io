@@ -1,0 +1,83 @@
+Start Date,Start Time,End Time,Location,Area,Category,Activity,Notes
+9/2/2026,11:34 AM,3:55 PM,Zurich HB to Paris Gare de Lyon,12th Arrondissement,Travel,TGV Lyria Train,Arrival Paris Gare de Lyon ETA: 3:55 PM
+9/2/2026,3:55 PM,4:45 PM,Gare de Lyon to 41 Rue de Verneuil,12th to 7th Arrondissements,Travel,Taxi/Metro to Airbnb,Allow 45-50 minutes after train arrival for disembarking luggage and transfer; check-in may run later than 4:00 PM
+9/2/2026,4:45 PM,6:00 PM,Saint-Germain-des-Pres & Rue de Buci,6th Arrondissement,Excursion,Explore Saint-Germain & Rue de Buci,Flexible arrival-day stroll; shorten if check-in runs late
+9/2/2026,6:00 PM,6:40 PM,Cafe de Flore / Les Deux Magots,6th Arrondissement,Coffee,Coffee break at historic cafe,Bd Saint-Germain
+9/2/2026,6:40 PM,7:15 PM,La Rhumerie / Maison Sauvage,6th Arrondissement,Drinks,Aperitif,Rue de Buci; optional if dinner timing is tight
+9/2/2026,7:15 PM,9:15 PM,Le Comptoir du Relais,6th Arrondissement,Dining,Arrival Dinner,No reservation assumed; treat as a bonus rather than a must-make reservation; use Le Bon Saint Pourcain / Bistro des Augustins / Semilla / Brasserie Lipp if wait is long
+9/2/2026,9:15 PM,9:45 PM,Pierre Herme,6th Arrondissement,Dessert,Grab macarons & pastries,Rue Bonaparte; optional
+9/3/2026,8:40 AM,9:15 AM,41 Rue de Verneuil to Louvre Museum,7th to 1st Arrondissements,Travel,Metro/Taxi to Louvre,Leave earlier to arrive around 9:15 AM and have a comfortable buffer before the 9:30 AM timed entry
+9/3/2026,9:30 AM,12:00 PM,Louvre Museum,1st Arrondissement,Excursion,Museum Entry,Locked Reservation (9:30 AM)
+9/3/2026,12:00 PM,12:45 PM,Tuileries Garden,1st Arrondissement,Excursion,Stroll Tuileries Garden,Walk directly from Louvre; keep this short to protect the afternoon reservation sequence
+9/3/2026,12:45 PM,2:00 PM,Rue Saint-Honore,1st Arrondissement,Shopping,Shopping at Maison Labiche / Soeur / A.P.C. / Sandro / Maje,Prioritize 2-3 shops rather than trying to visit all
+9/3/2026,2:00 PM,2:45 PM,Rue Saint-Honore to Ralph's Coffee,1st to 6th Arrondissements,Travel,Taxi/Metro to Ralph's Coffee,Leave buffer for transit and walking; do not extend shopping past 2:00 PM
+9/3/2026,3:00 PM,3:55 PM,Ralph's Coffee,6th Arrondissement,Coffee,Afternoon Coffee Reservation,Locked Reservation (3:00 PM); aim to leave around 3:50-3:55 rather than stretching the stop
+9/3/2026,3:55 PM,4:15 PM,Ralph's Coffee to Eiffel Tower,6th to 7th Arrondissements,Travel,Taxi to Eiffel Tower,Use taxi and leave immediately; this is a tight transfer and Eiffel visit takes priority over shopping/coffee
+9/3/2026,4:15 PM,6:15 PM,Eiffel Tower,7th Arrondissement,Excursion,Eiffel Tower visit,Casual and relaxed sightseeing
+9/3/2026,6:15 PM,7:00 PM,Eiffel Tower to La Bourse et La Vie,7th to 2nd Arrondissements,Travel,Taxi/Metro toward dinner,Use taxi if traffic permits; protect the 7:00 PM reservation
+9/3/2026,7:00 PM,9:00 PM,La Bourse et La Vie,2nd Arrondissement,Dining,Dinner Reservation,Locked Reservation (7:00 PM)
+9/3/2026,9:00 PM,9:30 PM,La Bourse et La Vie to Angelina,2nd to 1st Arrondissements,Travel,Walk/Metro to Angelina,Optional only if dinner finishes on time
+9/3/2026,9:30 PM,10:00 PM,Angelina,1st Arrondissement,Dessert,Hot Chocolate / Dessert,Rue de Rivoli; optional if dinner runs long
+9/4/2026,9:15 AM,9:30 AM,41 Rue de Verneuil to Place des Vosges,7th to 4th Arrondissements,Travel,Taxi/Metro to Le Marais,Leave apartment with enough time to begin at 9:30 AM
+9/4/2026,9:30 AM,10:30 AM,Place des Vosges & Hotel de Sully,4th Arrondissement,Excursion,Stroll Le Marais,
+9/4/2026,10:30 AM,11:30 AM,Le Marais,3rd & 4th Arrondissements,Shopping,Shopping at Merci / Fleux / Papier Tigre / The Broken Arm,Walk between shops; prioritize favorites rather than all four
+9/4/2026,11:30 AM,12:00 PM,Fringe,3rd Arrondissement,Coffee,Coffee break,Quick specialty coffee before the 12:00 PM Bouillon République reservation; keep this brief
+9/4/2026,12:00 PM,1:45 PM,Bouillon Republique,3rd Arrondissement,Dining,Lunch Reservation,Locked Reservation (12:00 PM)
+9/4/2026,1:45 PM,2:00 PM,Bouillon Republique to Marche des Enfants Rouges,3rd Arrondissement,Travel,Walk/Taxi to market,Short transfer after lunch
+9/4/2026,2:00 PM,3:00 PM,Marche des Enfants Rouges,3rd Arrondissement,Excursion,Explore covered market,Post-lunch market visit; browse food stalls and have dessert/coffee if desired
+9/4/2026,3:00 PM,3:30 PM,Marche des Enfants Rouges to 41 Rue de Verneuil,3rd to 7th Arrondissements,Travel,Taxi to Airbnb,Return promptly to protect the wedding preparation window
+9/4/2026,3:30 PM,5:00 PM,41 Rue de Verneuil,7th Arrondissement,Rest & Prep,Return to apartment to unpack rest shower and begin getting ready for Wedding Opening Night,Protected rest and preparation window; prioritize getting fully dressed before leaving for Arc de Triomphe
+9/4/2026,5:00 PM,5:30 PM,41 Rue de Verneuil to Arc de Triomphe,7th to 8th Arrondissements,Travel,Taxi to Arc de Triomphe,Leave promptly; use taxi to minimize transfer uncertainty
+9/4/2026,5:30 PM,6:00 PM,Arc de Triomphe,8th Arrondissement,Excursion,Arc de Triomphe visit & photos,Keep this to a short exterior/photo stop; skip the rooftop unless there is ample time and the wedding schedule allows
+9/4/2026,6:00 PM,6:30 PM,Arc de Triomphe to Le Studio des Acacias,8th to 17th Arrondissements,Travel,Taxi/Ride-share to wedding venue,Leave immediately after photos and allow traffic buffer
+9/4/2026,6:30 PM,7:00 PM,Le Studio des Acacias,17th Arrondissement,Event,Wedding venue arrival buffer,Arrive early enough to locate entrance, check in and settle before the 7:00 PM event
+9/4/2026,7:00 PM,11:00 PM,Le Studio des Acacias,17th Arrondissement,Event,Helen & Tristan's Wedding Opening Night,
+9/5/2026,9:00 AM,10:00 AM,Claire Damon / Terroirs d'Avenir,6th & 2nd Arrondissements,Food Pickup,Pick up baguette butter cheese berries and pastries,Strictly 2 focused stops maximum; skip Maison Louvard if either stop runs long
+9/5/2026,10:00 AM,10:15 AM,Food Pickup Stops to Jardin du Luxembourg,2nd to 6th Arrondissements,Travel,Walk/Metro/Taxi to Luxembourg Gardens,Keep the transfer efficient so the picnic remains relaxed
+9/5/2026,10:15 AM,11:30 AM,Jardin du Luxembourg,6th Arrondissement,Excursion,Morning Picnic with coffee from Coutume / Treize au Jardin,Low-key picnic and coffee; leave promptly for lunch
+9/5/2026,11:30 AM,11:40 AM,Jardin du Luxembourg to Le Bonaparte,6th Arrondissement,Travel,Walk to lunch,Very short local transfer
+9/5/2026,11:40 AM,1:00 PM,Le Bonaparte,6th Arrondissement,Dining,Sit-down Lunch in Saint-Germain,Earlier lunch gives more recovery time before the ceremony
+9/5/2026,1:00 PM,1:15 PM,Le Bonaparte to 41 Rue de Verneuil,6th to 7th Arrondissements,Travel,Walk/Taxi to Airbnb,Return promptly for the protected preparation window
+9/5/2026,1:15 PM,3:45 PM,41 Rue de Verneuil,7th Arrondissement,Rest & Prep,Return to apartment to unwind do hair/makeup and suit up for Wedding Ceremony,Protected prep window
+9/5/2026,3:45 PM,4:30 PM,41 Rue de Verneuil to Le Trianon,7th to 18th Arrondissements,Travel,Taxi/Ride-share to wedding ceremony,Leave early for traffic and arrival buffer
+9/5/2026,5:00 PM,6:30 PM,Le Trianon,18th Arrondissement,Event,Helen & Tristan's Wedding Ceremony,Bd de Rochechouart
+9/5/2026,6:30 PM,11:00 PM,L'Elysee Montmartre,18th Arrondissement,Event,Wedding Dinner & Reception,Bd de Rochechouart
+9/6/2026,10:30 AM,12:00 PM,Musée d'Orsay,7th Arrondissement,Excursion,Impressionist Museum Visit,Later start to allow recovery after the late wedding reception; shorten or skip if feeling tired
+9/6/2026,12:00 PM,12:15 PM,Musée d'Orsay to Le Relais de l'Entrecote,7th to 6th Arrondissements,Travel,Walk/Metro/Taxi to lunch,Short transfer toward Saint-Germain
+9/6/2026,12:15 PM,1:30 PM,Le Relais de l'Entrecote,6th Arrondissement,Dining,Lunch,Arrive around opening/lunch period; alternatives: Josephine Chez Dumonet / Le Petit Lutetia / Cafe Varenne
+9/6/2026,1:30 PM,2:00 PM,Le Relais de l'Entrecote to Le Bon Marche,6th to 7th Arrondissements,Travel,Walk/Metro to Le Bon Marché,Easy transfer after lunch
+9/6/2026,2:00 PM,4:00 PM,Le Bon Marche,7th Arrondissement,Shopping,Shopping at Fleuron / A.P.C. / Polene / Jerome Dreyfuss,Keep this flexible and prioritize favorite shops
+9/6/2026,4:00 PM,5:30 PM,La Grande Epicerie,7th Arrondissement,Shopping,Gourmet souvenirs,Mariage Freres / Bordier butter / Alain Ducasse / Bonne Maman
+9/6/2026,5:30 PM,6:30 PM,Cafe de La Grande Epicerie,7th Arrondissement,Coffee,Afternoon Coffee & Tea,Keep it local rather than crossing to the 1st arrondissement
+9/6/2026,6:30 PM,8:00 PM,7th to Gare de Lyon,7th to 12th Arrondissements,Travel,Taxi/Metro to Gare de Lyon,Protected buffer before the 8:30 PM reservation
+9/6/2026,8:30 PM,11:00 PM,Le Train Bleu,12th Arrondissement,Dining,Dinner Reservation @ Gare de Lyon,Locked Reservation (8:30 PM)
+9/7/2026,10:00 AM,11:00 AM,Café Nuances,1st Arrondissement,Coffee,Morning Coffee,Single coffee stop chosen to keep the morning on the Seine/central Paris side
+9/7/2026,11:00 AM,1:00 PM,Pont Neuf & Ile Saint-Louis,1st & 4th Arrondissements,Excursion,Stroll Pont Neuf & Ile Saint-Louis,Keep the route leisurely; no need to rush the islands
+9/7/2026,1:00 PM,2:00 PM,Ile Saint-Louis,4th Arrondissement,Excursion,Ice cream / Ile Saint-Louis stroll,Berthillon closed Monday; substitute another ice cream stop or simply extend the island stroll
+9/7/2026,2:00 PM,4:30 PM,Rue du Bac & Seine,7th Arrondissement,Excursion,Gallery browsing & Seine stroll,Keep the route leisurely; begin heading west toward Trocadéro by 4:30 PM
+9/7/2026,4:30 PM,5:00 PM,Rue du Bac to Trocadéro,7th to 16th Arrondissements,Travel,Taxi/Metro to Trocadéro,Head toward Trocadéro with enough time for a relaxed viewpoint visit before the cruise
+9/7/2026,5:00 PM,5:45 PM,Trocadéro,16th Arrondissement,Excursion,Eiffel Tower viewpoint & photos,Best positioned here before the evening cruise; walk down toward the Eiffel Tower afterward
+9/7/2026,5:45 PM,6:15 PM,Trocadéro to Eiffel Tower / Seine,16th to 7th Arrondissements,Travel,Walk down toward Eiffel Tower,Use the stairs/gardens route toward the Seine; allow time for photos along the way
+9/7/2026,6:15 PM,6:45 PM,Eiffel Tower / Seine,7th Arrondissement,Excursion,Walk around Eiffel Tower & Seine,Relaxed pre-cruise time; head toward Vedettes de Paris boarding point
+9/7/2026,6:45 PM,7:15 PM,Eiffel Tower / Seine to Vedettes de Paris,7th Arrondissement,Travel,Walk to cruise boarding point,Arrive before boarding; keep this buffer rather than cutting it close
+9/7/2026,7:15 PM,8:15 PM,Vedettes de Paris,7th Arrondissement,Excursion,Evening Seine Cruise,Target a departure around 7:15 PM for daylight-to-golden-hour-to-evening views; choose Musical Aperitif or Champagne option if available
+9/7/2026,8:15 PM,8:30 PM,Vedettes de Paris to Riviera Fuga,7th Arrondissement,Travel,Walk/Taxi to dinner,Keep dinner reservation close to the cruise departure area and allow a short transition
+9/7/2026,8:30 PM,10:00 PM,Riviera Fuga,7th Arrondissement,Dining,Date Night Dinner,Move dinner after the cruise; keep a relaxed 90-minute dinner rather than rushing to a fixed cruise boarding time
+9/8/2026,9:30 AM,12:00 PM,Montmartre & Sacre-Coeur,18th Arrondissement,Excursion,Explore Montmartre,Sacre-Coeur / Rue de l'Abreuvoir / Place Dalida
+9/8/2026,12:00 PM,12:45 PM,KB Coffee Roasters / Le Consulat,9th & 18th Arrondissements,Coffee,Coffee break in Montmartre,Keep lunch/coffee light so there is room for the market later
+9/8/2026,12:45 PM,1:30 PM,Montmartre to Marche des Enfants Rouges,18th to 3rd Arrondissements,Travel,Metro/Taxi toward Le Marais,Head south toward the Marais; protect the market visit
+9/8/2026,1:30 PM,2:15 PM,Marche des Enfants Rouges,3rd Arrondissement,Excursion,Explore market,Flexible market stop; grab a small bite or browse stalls if desired
+9/8/2026,2:15 PM,2:35 PM,Marche des Enfants Rouges to Shakespeare and Company,3rd to 5th Arrondissements,Travel,Taxi/Metro toward Île de la Cité,Allow for cross-river transfer
+9/8/2026,2:35 PM,3:15 PM,Shakespeare and Company,5th Arrondissement,Excursion,Visit Shakespeare and Company,Browse the historic English-language bookshop; keep to about 30-40 minutes
+9/8/2026,3:15 PM,3:25 PM,Shakespeare and Company to Sainte-Chapelle,5th to 1st Arrondissements,Travel,Walk to Sainte-Chapelle,Short walk across Île de la Cité
+9/8/2026,3:25 PM,4:15 PM,Sainte-Chapelle,1st Arrondissement,Excursion,Visit Sainte-Chapelle,Timed entry recommended; allow 45-50 minutes for the stained glass and chapel
+9/8/2026,4:15 PM,4:30 PM,Sainte-Chapelle to Notre-Dame,1st to 4th Arrondissements,Travel,Walk to Notre-Dame,Short walk across Île de la Cité
+9/8/2026,4:30 PM,5:30 PM,Notre-Dame de Paris,4th Arrondissement,Excursion,Visit Notre-Dame,Allow time for exterior views and interior visit; check current entry arrangements in advance
+9/8/2026,5:30 PM,6:30 PM,Île de la Cité & Seine,4th Arrondissement,Excursion,Explore Île de la Cité and Seine,Flexible late-afternoon block; use for photos, river views, souvenir pickup or recovery time
+9/8/2026,6:30 PM,7:00 PM,Flexible,Flexible,Travel,Head toward final dinner,Choose dinner based on where the afternoon ends
+9/8/2026,7:00 PM,9:00 PM,Flexible,Flexible,Dining,Final Paris Dinner,Flexible reservation; choose based on where the afternoon ends
+9/9/2026,10:00 AM,11:00 AM,41 Rue de Verneuil,7th Arrondissement,Check-out,Check-out AirBNB & pack luggage,Allow sufficient time for luggage and final check-out
+9/9/2026,11:00 AM,11:15 AM,41 Rue de Verneuil,7th Arrondissement,Travel,Prepare to leave for Gare de Lyon,Have luggage ready and depart promptly
+9/9/2026,11:15 AM,11:50 AM,41 Rue de Verneuil to Gare de Lyon,7th to 12th Arrondissements,Travel,Taxi/Metro to Gare de Lyon,Arrive roughly 45-50 minutes before the 12:38 PM TGV
+9/9/2026,11:50 AM,12:38 PM,Gare de Lyon,12th Arrondissement,Travel,Station buffer and boarding,Find platform and board without rushing
+9/9/2026,12:38 PM,3:15 PM,Gare de Lyon to Avignon TGV,12th Arrondissement,Travel,TGV Train to Provence,ETD: 12:38 PM

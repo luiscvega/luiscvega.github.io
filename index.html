@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Manila → Europe</title>
+<meta name="description" content="A travel dossier for the trip — Manila to Zurich, Paris, Provence, and Rome." />
+<meta name="theme-color" content="#1c2b27" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Our Trip" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="icon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="styles.css?v=10" />
+</head>
+<body>
+
+<div class="stage">
+
+  <div class="pinned-nav">
+    <nav class="quicknav" id="quicknav" aria-label="Jump to">
+      <button data-jump="today">Today</button>
+      <!-- Zurich/Gordes/Rome hidden while the day range is trimmed to Sep 2–9 -->
+      <button data-jump="stay-paris">Paris</button>
+      <button data-jump="wedding">Wedding</button>
+      <button id="copy-itinerary" class="copy-itinerary" type="button">Copy Itinerary</button>
+    </nav>
+
+    <nav class="daypicker" id="daypicker" aria-label="Choose a day"></nav>
+  </div>
+
+  <main id="daydetail" class="daydetail" aria-label="Itinerary for the selected day"></main>
+
+</div>
+
+<div class="map-overlay" id="map-overlay" aria-hidden="true">
+  <div class="map-overlay-bar">
+    <p class="map-overlay-title" id="map-overlay-title"></p>
+    <button class="map-close" id="map-close" aria-label="Close map">&times;</button>
+  </div>
+  <div id="map-full" class="map-full"></div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="data.js?v=8"></script>
+<script src="app.js?v=6"></script>
+</body>
+</html>
