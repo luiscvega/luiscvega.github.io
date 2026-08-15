@@ -2,7 +2,7 @@
 // nothing else needs to change.
 const TRIP = {
   // Bump this whenever the itinerary content changes — shown at the top of the page.
-  updated: '2026-08-15T05:42:57Z',
+  updated: '2026-08-15T06:10:24Z',
 
   // Trimmed to Sep 2–9 for now — full trip is Aug 28–Sep 16, see entries below.
   start: '2026-09-02',
@@ -616,7 +616,21 @@ const TRIP = {
         coords: [48.853, 2.3499],
       },
       {
-        time: '5:30 PM',
+        time: '5:00 PM',
+        kind: 'transit',
+        title: 'Travel to Île Saint-Louis',
+        notes: 'Short walk across Pont Saint-Louis from Notre-Dame.',
+      },
+      {
+        time: '5:15 PM',
+        kind: 'meal',
+        title: 'Berthillon',
+        notes: 'Classic Paris ice cream on Île Saint-Louis — closed Mondays, so today instead of the 7th.',
+        address: '29-31 Rue Saint-Louis en l’Île, 75004 Paris',
+        coords: [48.8517, 2.3568],
+      },
+      {
+        time: '5:45 PM',
         kind: 'activity',
         title: 'Île de la Cité & Seine',
         notes: 'Flexible late-afternoon block — photos, river views, souvenirs, or recovery time.',

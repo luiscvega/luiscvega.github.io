@@ -19,7 +19,13 @@
 
 html, body { height: 100%; }
 
-html { -webkit-text-size-adjust: 100%; }
+/* Browsers paint the area behind system UI (e.g. Android's edge-to-edge gesture
+   bar) using the root element's background, not body's — without this it falls
+   back to a default color instead of the app's ink background. */
+html {
+  background: var(--ink);
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   margin: 0;

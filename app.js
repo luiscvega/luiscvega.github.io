@@ -197,33 +197,28 @@ function setupServiceWorker() {
   });
 }
 
-function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+// Every file that affects what's rendered or how it behaves — itinerary content
+// (data.js), markup (index.html), and design/behavior (styles.css, app.js) alike.
+// Diffing their raw bytes against a baseline catches ANY change to any of them,
+// not just ones that happen to bump a ?v=N cache-busting number — so a pure CSS
+// tweak or markup edit gets picked up exactly the same as an itinerary update.
+const WATCHED_FILES = ['index.html', 'styles.css', 'app.js', 'data.js'];
+let contentBaseline = null;
 
-// Every versioned <script>/<link> on the page is "name?v=N" (the same cache-busting
-// convention already used whenever data.js/app.js/styles.css content changes).
-// Comparing our own versions against a fresh fetch of index.html is a simple, reliable
-// way to notice a new deploy without inventing a separate versioning scheme.
-function currentAssetVersions() {
-  const versions = {};
-  document.querySelectorAll('script[src], link[rel="stylesheet"][href]').forEach((el) => {
-    const url = el.getAttribute('src') || el.getAttribute('href');
-    const match = url && url.match(/^([\w.]+)\?v=(\d+)/);
-    if (match) versions[match[1]] = match[2];
-  });
-  return versions;
+async function fetchWatchedSnapshot() {
+  const texts = await Promise.all(WATCHED_FILES.map((f) => fetch(f, { cache: 'no-store' }).then((res) => res.text())));
+  return texts.join(' ');
 }
 
 async function checkForContentUpdate() {
   try {
-    const res = await fetch('index.html', { cache: 'no-store' });
-    const html = await res.text();
-    const current = currentAssetVersions();
-    for (const file in current) {
-      const match = html.match(new RegExp(escapeRegExp(file) + '\\?v=(\\d+)'));
-      if (match && match[1] !== current[file]) {
-        window.location.reload();
-        return;
-      }
+    const snapshot = await fetchWatchedSnapshot();
+    if (contentBaseline === null) {
+      contentBaseline = snapshot; // first run just establishes what's currently live
+      return;
+    }
+    if (snapshot !== contentBaseline) {
+      window.location.reload();
     }
   } catch (err) {
     // Offline or a transient network hiccup — just try again on the next interval.
@@ -231,6 +226,7 @@ async function checkForContentUpdate() {
 }
 
 function setupAutoUpdate() {
+  checkForContentUpdate(); // establish the baseline immediately rather than waiting for the first interval
   setInterval(checkForContentUpdate, 60000);
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') checkForContentUpdate();
