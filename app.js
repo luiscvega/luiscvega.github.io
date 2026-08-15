@@ -205,20 +205,62 @@ function setupServiceWorker() {
 const WATCHED_FILES = ['index.html', 'styles.css', 'app.js', 'data.js'];
 let contentBaseline = null;
 
-async function fetchWatchedSnapshot() {
-  const texts = await Promise.all(WATCHED_FILES.map((f) => fetch(f, { cache: 'no-store' }).then((res) => res.text())));
-  return texts.join(' ');
+// The ?v=N versions the RUNNING page actually loaded, read back off the DOM.
+// Comparing these against the server's index.html is the only way to notice that
+// *this page itself* was served stale from a cache — the content diff below can't
+// see that, since it only ever compares the network against the network.
+function runningAssetVersions() {
+  const versions = {};
+  document.querySelectorAll('script[src], link[rel="stylesheet"][href]').forEach((el) => {
+    const url = el.getAttribute('src') || el.getAttribute('href');
+    const match = url && url.match(/^([\w.-]+)\?v=(\d+)/);
+    if (match) versions[match[1]] = match[2];
+  });
+  return versions;
+}
+
+function serverIsAhead(html) {
+  const running = runningAssetVersions();
+  for (const file in running) {
+    const escaped = file.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const match = html.match(new RegExp(escaped + '\\?v=(\\d+)'));
+    if (match && match[1] !== running[file]) return true;
+  }
+  return false;
+}
+
+// Caches must go before reloading, or the reload can be served the very stale
+// copy we're trying to get away from.
+async function reloadWithFreshContent() {
+  try {
+    if (window.caches) {
+      const names = await caches.keys();
+      await Promise.all(names.map((name) => caches.delete(name)));
+    }
+  } catch (err) {
+    // Cache API unavailable or blocked — the reload below is still worth doing.
+  }
+  window.location.reload();
 }
 
 async function checkForContentUpdate() {
   try {
-    const snapshot = await fetchWatchedSnapshot();
+    const texts = await Promise.all(WATCHED_FILES.map((f) => fetch(f, { cache: 'no-store' }).then((res) => res.text())));
+
+    // Is the running page behind the server? (Catches a stale-cached page load.)
+    if (serverIsAhead(texts[0])) {
+      reloadWithFreshContent();
+      return;
+    }
+
+    // Has anything changed since we started watching? (Catches unversioned edits.)
+    const snapshot = texts.join(' ');
     if (contentBaseline === null) {
-      contentBaseline = snapshot; // first run just establishes what's currently live
+      contentBaseline = snapshot;
       return;
     }
     if (snapshot !== contentBaseline) {
-      window.location.reload();
+      reloadWithFreshContent();
     }
   } catch (err) {
     // Offline or a transient network hiccup — just try again on the next interval.
