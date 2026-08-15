@@ -178,6 +178,29 @@ function emptyDayHTML() {
   return `<div class="day-open"><span class="day-open-rule"></span><span class="day-open-mark">&#9670;</span><span class="day-open-rule"></span></div>`;
 }
 
+/* ---------- Last updated ---------- */
+
+function relativeTimeFromNow(date) {
+  const seconds = Math.round((Date.now() - date.getTime()) / 1000);
+  if (seconds < 60) return 'just now';
+  const minutes = Math.round(seconds / 60);
+  if (minutes < 60) return `${minutes} minute${minutes === 1 ? '' : 's'} ago`;
+  const hours = Math.round(minutes / 60);
+  if (hours < 24) return `${hours} hour${hours === 1 ? '' : 's'} ago`;
+  const days = Math.round(hours / 24);
+  if (days < 7) return `${days} day${days === 1 ? '' : 's'} ago`;
+  const weeks = Math.round(days / 7);
+  return `${weeks} week${weeks === 1 ? '' : 's'} ago`;
+}
+
+function renderLastUpdated() {
+  const el = document.getElementById('last-updated');
+  if (!el || !TRIP.updated) return;
+  const updated = new Date(TRIP.updated);
+  const dateLabel = updated.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  el.textContent = `Updated ${dateLabel} · ${relativeTimeFromNow(updated)}`;
+}
+
 /* ---------- Day picker ---------- */
 
 function renderDayPicker(selected) {
@@ -455,6 +478,8 @@ function setupCopyItinerary() {
 
 function init() {
   const initial = clampToTrip(todayISO());
+  renderLastUpdated();
+  setInterval(renderLastUpdated, 60000);
   renderDayPicker(initial);
   renderDayPanels();
   setupDayPicker();

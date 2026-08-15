@@ -1,6 +1,9 @@
 // The trip, in order. Edit this file to add or update details —
 // nothing else needs to change.
 const TRIP = {
+  // Bump this whenever the itinerary content changes — shown at the top of the page.
+  updated: '2026-08-15T05:42:57Z',
+
   // Trimmed to Sep 2–9 for now — full trip is Aug 28–Sep 16, see entries below.
   start: '2026-09-02',
   end: '2026-09-09',
