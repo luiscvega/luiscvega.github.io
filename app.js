@@ -659,31 +659,53 @@ function renderLayoutDiagnostics() {
     return value;
   }
 
+  function measureUnit(unit) {
+    const probe = document.createElement('div');
+    probe.style.cssText = `position:fixed;left:-9999px;top:0;height:100${unit};`;
+    document.body.appendChild(probe);
+    const value = probe.getBoundingClientRect().height;
+    probe.remove();
+    return value;
+  }
+
   const stage = document.querySelector('.stage').getBoundingClientRect();
   const picker = document.getElementById('daypicker').getBoundingClientRect();
   const vv = window.visualViewport;
 
-  const marker = document.createElement('div');
-  marker.style.cssText = 'position:fixed;left:0;right:0;bottom:0;height:2px;background:#ff00ff;z-index:9999;pointer-events:none;';
-  document.body.appendChild(marker);
+  // Magenta = where the app currently believes the bottom edge is
+  // (window.innerHeight, via .stage's bottom:0). Cyan = where 100lvh says
+  // the bottom is. If cyan sits lower than magenta, lvh sees more of the
+  // screen than innerHeight does, and switching .stage to it would close
+  // the gap.
+  const magenta = document.createElement('div');
+  magenta.style.cssText = 'position:fixed;left:0;right:0;bottom:0;height:3px;background:#ff00ff;z-index:9999;pointer-events:none;';
+  document.body.appendChild(magenta);
+
+  const lvh = measureUnit('lvh');
+  const cyan = document.createElement('div');
+  cyan.style.cssText = `position:fixed;left:0;right:0;top:${lvh - 3}px;height:3px;background:#00ffff;z-index:9999;pointer-events:none;`;
+  document.body.appendChild(cyan);
 
   const rows = [
     ['standalone', navigator.standalone],
     ['innerHeight', window.innerHeight],
     ['visualViewport.h', vv ? Math.round(vv.height) : 'n/a'],
-    ['visualViewport.offsetTop', vv ? Math.round(vv.offsetTop) : 'n/a'],
+    ['screen.height', window.screen.height],
+    ['screen.availHeight', window.screen.availHeight],
+    ['devicePixelRatio', window.devicePixelRatio],
+    ['100dvh', measureUnit('dvh')],
+    ['100lvh (cyan line)', lvh],
+    ['100svh', measureUnit('svh')],
     ['safe-bottom env()', measureEnv('safe-area-inset-bottom')],
-    ['stage bottom', Math.round(stage.bottom)],
+    ['stage bottom (magenta)', Math.round(stage.bottom)],
     ['picker top/bottom', `${Math.round(picker.top)}/${Math.round(picker.bottom)}`],
-    ['gap: innerHeight - picker.bottom', Math.round(window.innerHeight - picker.bottom)],
-    ['gap: stage.bottom - picker.bottom', Math.round(stage.bottom - picker.bottom)],
   ];
 
   const box = document.createElement('div');
   box.style.cssText =
     'position:fixed;left:8px;bottom:8px;z-index:9999;background:rgba(0,0,0,0.9);color:#0f0;' +
     'font:600 11px/1.5 monospace;padding:8px 10px;border-radius:6px;pointer-events:none;' +
-    'display:grid;grid-template-columns:auto auto;gap:0 10px;';
+    'display:grid;grid-template-columns:auto auto;gap:0 10px;max-width:calc(100vw - 32px);';
   box.innerHTML = rows.map(([k, v]) => `<span style="color:#888">${k}</span><span>${v}</span>`).join('');
   document.body.appendChild(box);
 }
