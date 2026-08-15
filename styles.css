@@ -35,16 +35,24 @@ body {
 }
 
 /* The page scrolls normally — no fixed shell, no dedicated scroll region.
-   This is the version that was actually confirmed bug-free on-device;
-   everything built on top of position:fixed (the always-visible top/bottom
-   bars) kept surfacing new iOS-standalone-only rendering issues one after
-   another. Letting the document itself scroll is what iOS handles most
-   reliably around its own system UI. */
+   This is the version confirmed bug-free on-device; position:fixed (the
+   always-visible top/bottom bars) kept surfacing new iOS-standalone-only
+   rendering issues one after another.
+
+   min-height uses lvh, not just dvh — on-device diagnostics from that same
+   debugging round showed dvh/innerHeight under-reporting the true screen
+   height by ~59px in standalone mode specifically (a known WebKit bug: it
+   reserves space for browser chrome that structurally can't appear in a
+   standalone app). That's very likely what the original "huge bottom
+   padding" report was, back when the date picker was first made sticky —
+   .stage's minimum height was silently ~59px short of the real screen, so
+   anything pinned to its bottom stopped short of the true edge too. */
 .stage {
   max-width: 480px;
   margin: 0 auto;
   min-height: 100vh;
   min-height: 100dvh;
+  min-height: 100lvh;
   display: flex;
   flex-direction: column;
 }
@@ -114,11 +122,17 @@ body {
 
 /* ---------- Day picker (pinned to the bottom, within thumb reach) ---------- */
 
-/* Sits in normal page flow, not fixed/sticky — margin-top:auto pushes it to
-   the bottom of .stage's box even on a short day (.stage has a min-height of
-   one viewport), while still just being a normal element that scrolls away
-   with everything else on a long day. */
+/* Sticky within the page's own scroll, not fixed — stays visible while
+   scrolling through a long day, and margin-top:auto still pushes it to the
+   bottom of .stage's one-viewport minimum on a short one. Split from
+   .daypicker-scroll on purpose: position:sticky and overflow-x:auto on the
+   SAME element is an unreliable combination in Safari (the sticky can fail
+   to stick at all) — the outer element only sticks, the inner one only
+   scrolls horizontally. */
 .daypicker {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
   margin-top: auto;
   background: var(--ink);
   box-shadow: 0 -14px 18px -10px rgba(0, 0, 0, 0.55);
