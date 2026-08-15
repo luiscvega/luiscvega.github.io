@@ -5,6 +5,7 @@ const TRANSIT_ICON = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none
 const MEAL_ICON = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>';
 const SIGHT_ICON = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3"/></svg>';
 const MAP_ICON = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.5 7-12a7 7 0 0 0-14 0c0 4.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.3"/></svg>';
+const IG_ICON = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>';
 
 function pad(n) { return String(n).padStart(2, '0'); }
 
@@ -154,6 +155,26 @@ function weddingHeaderHTML(couple) {
     </div>`;
 }
 
+// Maps links are just a search query — the app doesn't need precise coordinates
+// for this (unlike the map-pin feature), so any establishment with a `maps`
+// query gets a link. `instagram` is only ever a verified handle, never a guess.
+function googleMapsSearchURL(query) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
+function instagramURL(handle) {
+  return `https://www.instagram.com/${handle.replace(/^@/, '')}/`;
+}
+
+function establishmentLinksHTML(maps, instagram) {
+  if (!maps) return '';
+  const links = [`<a class="card-link" href="${googleMapsSearchURL(maps)}" target="_blank" rel="noopener" aria-label="Open in Google Maps">${MAP_ICON}</a>`];
+  if (instagram) {
+    links.push(`<a class="card-link" href="${instagramURL(instagram)}" target="_blank" rel="noopener" aria-label="Open on Instagram">${IG_ICON}</a>`);
+  }
+  return `<div class="card-links">${links.join('')}</div>`;
+}
+
 function weddingEventCardHTML(ev) {
   return `
     <div class="card wevent-card">
@@ -162,6 +183,7 @@ function weddingEventCardHTML(ev) {
       <p class="addr">${ev.address}</p>
       <div class="dress"><strong>Dress —</strong> ${ev.dress}</div>
       <p class="note">${ev.note}</p>
+      ${establishmentLinksHTML(ev.maps || ev.address, ev.instagram)}
     </div>`;
 }
 
@@ -172,6 +194,7 @@ function planCardHTML(plan) {
     <div class="card plan-card ${cls}">
       <p class="plan-title"><span class="plan-icon">${icon}</span>${plan.title || 'Plan for today'}</p>
       ${plan.notes ? `<p class="plan-notes">${plan.notes}</p>` : ''}
+      ${establishmentLinksHTML(plan.maps || plan.address, plan.instagram)}
     </div>`;
 }
 

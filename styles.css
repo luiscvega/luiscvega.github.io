@@ -475,6 +475,28 @@ body {
   color: var(--charcoal-soft);
 }
 
+/* Google Maps / Instagram links on establishment cards */
+.card-links {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(42, 36, 32, 0.2);
+}
+
+.card-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(42, 36, 32, 0.08);
+  color: var(--charcoal-soft);
+}
+
+.card-link:active { background: rgba(42, 36, 32, 0.16); }
+
 /* Transit rows ("Travel to X") are connective tissue between the real stops,
    not a destination in their own right — a plain parchment card gave them the
    same visual weight as everything else. Ghosted instead: no card surface,

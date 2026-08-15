@@ -2,7 +2,7 @@
 // nothing else needs to change.
 const TRIP = {
   // Bump this whenever the itinerary content changes — shown at the top of the page.
-  updated: '2026-08-15T08:37:12Z',
+  updated: '2026-08-15T10:48:00Z',
 
   // Trimmed to Sep 2–9 for now — full trip is Aug 28–Sep 16, see entries below.
   start: '2026-09-02',
@@ -68,6 +68,8 @@ const TRIP = {
             time: '7:00 PM',
             venue: 'Le Studio des Acacias',
             address: '17th Arrondissement, Paris',
+            maps: 'Le Studio des Acacias, 30 Rue des Acacias, 75017 Paris',
+            instagram: 'reiffers_art_initiatives',
             dress: "Smart casual — wear what you're comfortable in <strong>(just not a white dress)</strong>.",
             note: 'Cocktail party with hors d’oeuvres and small plates.',
           },
@@ -77,6 +79,7 @@ const TRIP = {
             time: '5 – 6:30 PM',
             venue: 'Le Trianon',
             address: '80 Boulevard de Rochechouart, 75018 Paris',
+            instagram: 'letrianonparis',
             dress: 'Black tie recommended, formal evening attire. <strong>Any color but white.</strong>',
             note: 'Ceremony in the theatre, cocktail hour to follow in the lobby.',
           },
@@ -86,6 +89,7 @@ const TRIP = {
             time: '6:30 – 11 PM',
             venue: 'L’Élysée Montmartre',
             address: '72 Boulevard de Rochechouart, 75018 Paris',
+            instagram: 'elyseemontmartre',
             dress: 'Same as ceremony — black tie recommended.',
             note: 'Seated dinner, toasts, and late-night dancing. Coat check for personal items and dance shoes.',
           },
@@ -182,24 +186,32 @@ const TRIP = {
         kind: 'meal',
         title: 'Café de Flore / Les Deux Magots',
         notes: 'Coffee break at a historic café on Bd Saint-Germain.',
+        maps: 'Café de Flore, Boulevard Saint-Germain, Paris',
+        instagram: 'lecafedeflore',
       },
       {
         time: '6:40 PM',
         kind: 'meal',
         title: 'La Rhumerie / Maison Sauvage',
         notes: 'Aperitif on Rue de Buci — optional if dinner timing is tight.',
+        maps: 'La Rhumerie, Rue de Buci, Paris',
+        instagram: 'larhumerieparis',
       },
       {
         time: '7:15 PM',
         kind: 'meal',
         title: 'Le Comptoir du Relais',
         notes: 'Arrival dinner, no reservation assumed — treat as a bonus, not a must. Alt: Le Bon Saint Pourcain, Bistro des Augustins, Semilla, Brasserie Lipp.',
+        maps: 'Le Comptoir du Relais, Paris',
+        instagram: 'comptoir_durelais',
       },
       {
         time: '9:15 PM',
         kind: 'meal',
         title: 'Pierre Hermé',
         notes: 'Macarons and pastries on Rue Bonaparte — optional.',
+        maps: 'Pierre Hermé, Rue Bonaparte, Paris',
+        instagram: 'pierrehermeofficial',
       },
     ],
     '2026-09-03': [
@@ -216,6 +228,7 @@ const TRIP = {
         notes: 'Locked reservation, 9:30 AM entry.',
         address: 'Musée du Louvre, 75001 Paris',
         coords: [48.8606, 2.3376],
+        instagram: 'museelouvre',
       },
       {
         time: '12:00 PM',
@@ -242,6 +255,8 @@ const TRIP = {
         kind: 'meal',
         title: 'Ralph’s Coffee',
         notes: 'Locked reservation, 3:00 PM — aim to leave by 3:50–3:55 rather than stretching the stop.',
+        maps: 'Ralph’s Coffee, Paris',
+        instagram: 'ralphscoffee',
       },
       {
         time: '3:55 PM',
@@ -256,6 +271,7 @@ const TRIP = {
         notes: 'Timed ticket — prioritize 2nd floor/summit as available, allow time for security.',
         address: 'Eiffel Tower, 5 Avenue Anatole France, 75007 Paris',
         coords: [48.8584, 2.2945],
+        instagram: 'toureiffelofficielle',
       },
       {
         time: '6:15 PM',
@@ -270,6 +286,7 @@ const TRIP = {
         notes: 'Locked reservation, 7:00 PM.',
         address: '12 Rue Vivienne, 75002 Paris',
         coords: [48.8695, 2.3403],
+        instagram: 'labourselavie',
       },
       {
         time: '9:00 PM',
@@ -282,6 +299,8 @@ const TRIP = {
         kind: 'meal',
         title: 'Angelina',
         notes: 'Hot chocolate and dessert on Rue de Rivoli — optional if dinner runs long.',
+        maps: 'Angelina, Rue de Rivoli, Paris',
+        instagram: 'angelina_paris',
       },
     ],
     '2026-09-04': [
@@ -312,12 +331,15 @@ const TRIP = {
         notes: 'Quick specialty coffee before the noon Bouillon République reservation — keep this brief.',
         address: '106 Rue de Turenne, 75003 Paris',
         coords: [48.8625, 2.3646],
+        instagram: 'fringecoffeeparis',
       },
       {
         time: '12:00 PM',
         kind: 'meal',
         title: 'Bouillon République',
         notes: 'Locked reservation, 12:00 PM.',
+        maps: 'Bouillon République, Boulevard du Temple, Paris',
+        instagram: 'bouillonlinsta',
       },
       {
         time: '1:45 PM',
@@ -358,6 +380,7 @@ const TRIP = {
         notes: 'Short exterior/photo stop — skip the rooftop unless there’s ample time and the schedule allows.',
         address: 'Arc de Triomphe, Place Charles de Gaulle, 75008 Paris',
         coords: [48.8738, 2.295],
+        instagram: 'arcdetriomphe_paris',
       },
       {
         time: '6:00 PM',
@@ -372,6 +395,7 @@ const TRIP = {
         notes: 'Arrive early enough to find the entrance, check in, and settle before the 7:00 PM event.',
         address: 'Le Studio des Acacias, 30 Rue des Acacias, 75017 Paris',
         coords: [48.8753, 2.29],
+        instagram: 'reiffers_art_initiatives',
       },
     ],
     '2026-09-05': [
@@ -386,6 +410,8 @@ const TRIP = {
         kind: 'meal',
         title: 'Claire Damon / Terroirs d’Avenir',
         notes: 'Pick up baguette, butter, cheese, berries, and pastries — strictly 2 stops max, skip Maison Louvard if either runs long.',
+        maps: 'Des Gâteaux et du Pain, Claire Damon, Paris',
+        instagram: 'desgateauxetdupain.clairedamon',
       },
       {
         time: '10:00 AM',
@@ -410,6 +436,8 @@ const TRIP = {
         kind: 'meal',
         title: 'Le Bonaparte',
         notes: 'Sit-down lunch in Saint-Germain — earlier lunch gives more recovery time before the ceremony.',
+        maps: 'Le Bonaparte, Place Saint-Germain-des-Prés, Paris',
+        instagram: 'cafelebonaparte',
       },
       {
         time: '1:00 PM',
@@ -442,6 +470,8 @@ const TRIP = {
         kind: 'activity',
         title: 'Musée d’Orsay',
         notes: 'Later start to allow recovery after the late wedding reception — shorten or skip if feeling tired.',
+        maps: 'Musée d’Orsay, Paris',
+        instagram: 'museeorsay',
       },
       {
         time: '12:00 PM',
@@ -454,6 +484,8 @@ const TRIP = {
         kind: 'meal',
         title: 'Le Relais de l’Entrecôte',
         notes: 'Arrive around the lunch opening. Alt: Joséphine Chez Dumonet, Le Petit Lutetia, Café Varenne.',
+        maps: 'Le Relais de l’Entrecôte, Saint-Germain, Paris',
+        instagram: 'relaisdelentrecote',
       },
       {
         time: '1:30 PM',
@@ -466,18 +498,24 @@ const TRIP = {
         kind: 'activity',
         title: 'Le Bon Marché',
         notes: 'Shopping — Fleuron, A.P.C., Polène, Jérôme Dreyfuss. Keep this flexible, prioritize favorite shops.',
+        maps: 'Le Bon Marché, Rue de Sèvres, Paris',
+        instagram: 'lebonmarcherivegauche',
       },
       {
         time: '4:00 PM',
         kind: 'activity',
         title: 'La Grande Épicerie',
         notes: 'Gourmet souvenirs — Mariage Frères tea, Bordier butter, Alain Ducasse chocolate, Bonne Maman.',
+        maps: 'La Grande Épicerie, Paris',
+        instagram: 'lagrandeepicerie',
       },
       {
         time: '5:30 PM',
         kind: 'meal',
         title: 'Café de La Grande Épicerie',
         notes: 'Afternoon coffee and tea — keep it local rather than crossing to the 1st.',
+        maps: 'La Grande Épicerie, Paris',
+        instagram: 'lagrandeepicerie',
       },
       {
         time: '6:30 PM',
@@ -490,6 +528,8 @@ const TRIP = {
         kind: 'meal',
         title: 'Le Train Bleu',
         notes: 'Locked reservation, 8:30 PM, at Gare de Lyon.',
+        maps: 'Le Train Bleu, Gare de Lyon, Paris',
+        instagram: 'restaurantletrainbleu',
       },
     ],
     '2026-09-07': [
@@ -504,6 +544,8 @@ const TRIP = {
         kind: 'meal',
         title: 'Café Nuances',
         notes: 'Morning coffee — kept central to stay near the Seine.',
+        maps: 'Café Nuances, Paris',
+        instagram: 'cafenuances',
       },
       {
         time: '11:00 AM',
@@ -566,6 +608,8 @@ const TRIP = {
         kind: 'activity',
         title: 'Vedettes de Paris',
         notes: 'Evening Seine cruise, 8:15 PM — Champagne cruise booked.',
+        maps: 'Vedettes de Paris, Paris',
+        instagram: 'vedettesdeparis',
       },
     ],
     '2026-09-08': [
@@ -580,12 +624,15 @@ const TRIP = {
         kind: 'activity',
         title: 'Montmartre & Sacré-Cœur',
         notes: 'Sacré-Cœur, Rue de l’Abreuvoir, Place Dalida.',
+        maps: 'Sacré-Cœur, Paris',
       },
       {
         time: '12:00 PM',
         kind: 'meal',
         title: 'KB Coffee Roasters / Le Consulat',
         notes: 'Coffee break in Montmartre — keep it light, save room for the market later.',
+        maps: 'KB CoffeeRoasters, Montmartre, Paris',
+        instagram: 'kbcoffeeroastersparis',
       },
       {
         time: '12:45 PM',
@@ -612,6 +659,7 @@ const TRIP = {
         notes: 'Browse the historic English-language bookshop — keep it to 30–40 minutes.',
         address: '37 Rue de la Bûcherie, 75005 Paris',
         coords: [48.8523, 2.3471],
+        instagram: 'shakespeareandcoparis',
       },
       {
         time: '3:15 PM',
@@ -626,6 +674,7 @@ const TRIP = {
         notes: 'Timed entry recommended — allow 45–50 minutes for the stained glass and chapel.',
         address: '8 Boulevard du Palais, 75001 Paris',
         coords: [48.8554, 2.345],
+        instagram: 'sainte_chapelle',
       },
       {
         time: '4:15 PM',
@@ -640,6 +689,7 @@ const TRIP = {
         notes: 'Allow time for exterior views and the interior visit — check current entry arrangements in advance.',
         address: '6 Parvis Notre-Dame, 75004 Paris',
         coords: [48.853, 2.3499],
+        instagram: 'notredamedeparis',
       },
       {
         time: '5:00 PM',
@@ -654,6 +704,7 @@ const TRIP = {
         notes: 'Classic Paris ice cream on Île Saint-Louis — closed Mondays, so today instead of the 7th.',
         address: '29-31 Rue Saint-Louis en l’Île, 75004 Paris',
         coords: [48.8517, 2.3568],
+        instagram: 'berthillon_officiel',
       },
       {
         time: '5:45 PM',
