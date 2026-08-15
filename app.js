@@ -529,8 +529,9 @@ function goToDay(date) {
   renderDay(date);
   updateDayPickerSelection(date);
   // Start a newly chosen day at its beginning rather than wherever the previous
-  // day happened to be scrolled to.
-  window.scrollTo({ top: 0, behavior: 'auto' });
+  // day happened to be scrolled to. #daydetail is the scrollable region now,
+  // not the page itself.
+  document.getElementById('daydetail').scrollTop = 0;
 }
 
 function setupDayPicker() {

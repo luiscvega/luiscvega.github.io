@@ -17,9 +17,6 @@
 
 * { box-sizing: border-box; }
 
-/* The page scrolls normally — no fixed heights, no nested scroll containers.
-   Letting the document itself scroll is what browsers (iOS especially) handle
-   most reliably around their own system UI. */
 html {
   background: var(--ink);
   -webkit-text-size-adjust: 100%;
@@ -27,31 +24,36 @@ html {
 
 body {
   margin: 0;
-  min-height: 100%;
+  overflow: hidden;
   background: var(--ink);
   background-image: var(--grain-dark), radial-gradient(circle at 50% -10%, rgba(184, 134, 46, 0.14), transparent 55%);
-  background-attachment: fixed;
   color: var(--cream-text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   line-height: 1.4;
 }
 
+/* Fixed to the true viewport edges (not sized with dvh — dvh calculation is
+   unreliable in iOS's home-screen-installed standalone mode and can come up
+   short of the real bottom edge). Top bar and day picker are plain flex
+   children that just sit at the top/bottom of this fixed shell; only
+   #daydetail in the middle scrolls. One scroll region, not nested ones. */
 .stage {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   max-width: 480px;
   margin: 0 auto;
-  /* Only a minimum, so the day picker can sit at the bottom even on a short
-     day. Using min-height (not height) keeps an under-reported viewport from
-     ever clipping content — the worst case is a little slack at the bottom. */
-  min-height: 100vh;
-  min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
 
-/* ---------- Top bar (scrolls away — the dates below are the main control) ---------- */
+/* ---------- Top bar (always visible — pinned by being part of the fixed shell) ---------- */
 
 .topbar {
+  flex: 0 0 auto;
   padding-top: env(safe-area-inset-top);
 }
 
@@ -114,15 +116,12 @@ body {
 
 /* ---------- Day picker (pinned to the bottom, within thumb reach) ---------- */
 
-/* Split into two elements on purpose: position:sticky and overflow-x:auto on
-   the SAME element is an unreliable combination in Safari (the sticky
-   positioning can fail to stick at all). The outer .daypicker only sticks;
-   the inner .daypicker-scroll only scrolls. */
+/* No position:sticky needed any more -- .daypicker is simply the last flex
+   child of the fixed .stage shell, so it's always at the bottom already.
+   (Still split from .daypicker-scroll for the horizontal-scroll strip itself,
+   which is unrelated to this.) */
 .daypicker {
-  position: sticky;
-  bottom: 0;
-  z-index: 20;
-  margin-top: auto;
+  flex: 0 0 auto;
   background: var(--ink);
   box-shadow: 0 -14px 18px -10px rgba(0, 0, 0, 0.55);
   padding-bottom: env(safe-area-inset-bottom);
@@ -192,9 +191,17 @@ body {
 .day-pill.selected .dot.travel { background: var(--ink); }
 .day-pill.selected .dot.wedding { background: var(--bordeaux); }
 
-/* ---------- Day detail (one day at a time, in normal page flow) ---------- */
+/* ---------- Day detail (the one scrollable region) ---------- */
 
-/* No safe-area inset needed here any more — the day picker below owns that. */
+.daydetail {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+/* No safe-area inset needed here — the day picker below owns that. */
 .day-panel {
   padding: 22px 24px 30px;
 }
