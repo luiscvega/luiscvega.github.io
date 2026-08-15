@@ -1,6 +1,9 @@
 // The trip, in order. Edit this file to add or update details —
 // nothing else needs to change.
 const TRIP = {
+  // Bump this whenever the itinerary content changes — shown at the top of the page.
+  updated: '2026-08-15T05:42:57Z',
+
   // Trimmed to Sep 2–9 for now — full trip is Aug 28–Sep 16, see entries below.
   start: '2026-09-02',
   end: '2026-09-09',
@@ -166,13 +169,13 @@ const TRIP = {
         time: '3:55 PM',
         kind: 'transit',
         title: 'Travel to the Apartment',
-        notes: 'Allow 45–50 minutes after the train for luggage and the transfer — check-in may run later than 4:00 PM.',
+        notes: 'Allow up to 80 minutes after the train for luggage, the transfer, and check-in, which may run later than 4:00 PM.',
       },
       {
-        time: '4:45 PM',
+        time: '5:15 PM',
         kind: 'activity',
         title: 'Explore Saint-Germain & Rue de Buci',
-        notes: 'Flexible arrival-day stroll — shorten if check-in runs late.',
+        notes: 'Short arrival-day stroll before the café — flexible if check-in runs long.',
       },
       {
         time: '6:00 PM',
@@ -200,6 +203,12 @@ const TRIP = {
       },
     ],
     '2026-09-03': [
+      {
+        time: '6:00 AM',
+        kind: 'meal',
+        title: 'Breakfast at the Apartment',
+        notes: 'Quick breakfast before heading out for the day.',
+      },
       {
         time: '8:40 AM',
         kind: 'transit',
@@ -518,31 +527,25 @@ const TRIP = {
         time: '6:15 PM',
         kind: 'activity',
         title: 'Eiffel Tower & Seine',
-        notes: 'Relaxed pre-cruise time — head toward the Vedettes de Paris boarding point.',
+        notes: 'Short pre-dinner stop — head toward dinner from here.',
       },
       {
-        time: '6:45 PM',
+        time: '6:30 PM',
+        kind: 'meal',
+        title: 'Dinner',
+        notes: 'Location TBD — allow travel time to get there once it’s booked.',
+      },
+      {
+        time: '7:45 PM',
         kind: 'transit',
         title: 'Travel to the Cruise Dock',
         notes: 'Arrive before boarding — keep this buffer rather than cutting it close.',
       },
       {
-        time: '7:15 PM',
+        time: '8:15 PM',
         kind: 'activity',
         title: 'Vedettes de Paris',
-        notes: 'Evening Seine cruise, ~7:15 PM, for daylight-to-golden-hour-to-evening views — choose the Musical Aperitif or Champagne option if available.',
-      },
-      {
-        time: '8:15 PM',
-        kind: 'transit',
-        title: 'Travel to Dinner',
-        notes: 'Keep dinner close to the cruise departure area for a short transition.',
-      },
-      {
-        time: '8:30 PM',
-        kind: 'meal',
-        title: 'Riviera Fuga',
-        notes: 'Date-night dinner after the cruise — a relaxed 90 minutes rather than rushing to a fixed boarding time.',
+        notes: 'Evening Seine cruise, 8:15 PM — Champagne cruise booked.',
       },
     ],
     '2026-09-08': [
