@@ -127,9 +127,15 @@ body {
    which is unrelated to this.) */
 .daypicker {
   flex: 0 0 auto;
+  position: relative;
   background: var(--ink);
   box-shadow: 0 -14px 18px -10px rgba(0, 0, 0, 0.55);
   padding-bottom: env(safe-area-inset-bottom);
+  /* Own compositor layer, isolated from whatever's scrolling above it in
+     #daydetail — guards against a stale-paint artifact at the edge of a
+     horizontally scrollable strip that can show up on iOS after repeated
+     reloads (this app reloads itself on every content update). */
+  transform: translateZ(0);
 }
 
 .daypicker-scroll {
@@ -137,6 +143,8 @@ body {
   align-items: center;
   gap: 8px;
   overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
   padding: 12px 24px 10px;
   scrollbar-width: none;
 }
