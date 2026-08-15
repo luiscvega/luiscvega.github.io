@@ -626,10 +626,29 @@ function setupCopyItinerary() {
 
 /* ---------- Layout diagnostics (opt-in via ?debug=1) ---------- */
 
-// Only runs when the URL explicitly asks for it. Measures exactly what's
-// happening at the bottom edge instead of guessing from a screenshot again.
+// Runs when the URL asks for it (?debug=1) OR when toggled via 5 quick taps
+// on the "Updated..." line — installed standalone PWAs have no address bar,
+// so a query param can't be added once you're actually inside the app.
+function setupDebugToggle() {
+  const el = document.getElementById('last-updated');
+  if (!el) return;
+  let taps = 0;
+  let timer = null;
+  el.addEventListener('click', () => {
+    taps++;
+    clearTimeout(timer);
+    timer = setTimeout(() => { taps = 0; }, 1500);
+    if (taps >= 5) {
+      taps = 0;
+      if (localStorage.getItem('debug') === '1') localStorage.removeItem('debug');
+      else localStorage.setItem('debug', '1');
+      window.location.reload();
+    }
+  });
+}
+
 function renderLayoutDiagnostics() {
-  if (!/[?&]debug=1/.test(window.location.search)) return;
+  if (!/[?&]debug=1/.test(window.location.search) && localStorage.getItem('debug') !== '1') return;
 
   function measureEnv(name) {
     const probe = document.createElement('div');
@@ -649,6 +668,7 @@ function renderLayoutDiagnostics() {
   document.body.appendChild(marker);
 
   const rows = [
+    ['standalone', navigator.standalone],
     ['innerHeight', window.innerHeight],
     ['visualViewport.h', vv ? Math.round(vv.height) : 'n/a'],
     ['visualViewport.offsetTop', vv ? Math.round(vv.offsetTop) : 'n/a'],
@@ -674,6 +694,7 @@ function init() {
   setupAutoUpdate();
   renderLastUpdated();
   setInterval(renderLastUpdated, 60000);
+  setupDebugToggle();
   renderDayPicker(initial);
   setupDayPicker();
   setupSwipe();
