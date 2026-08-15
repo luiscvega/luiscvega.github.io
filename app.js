@@ -348,7 +348,7 @@ function renderDayPicker(selected) {
         <span class="dot ${dotClass}"></span>
       </button>`;
   }
-  document.getElementById('daypicker').innerHTML = html;
+  document.getElementById('daypicker-scroll').innerHTML = html;
 }
 
 /* ---------- Day detail ---------- */
@@ -509,7 +509,7 @@ let selectedDate = null;
 function dayIndex(date) { return ALL_DAYS.indexOf(date); }
 
 function updateDayPickerSelection(date) {
-  const picker = document.getElementById('daypicker');
+  const picker = document.getElementById('daypicker-scroll');
   document.querySelectorAll('.day-pill').forEach(btn => {
     const active = btn.dataset.date === date;
     btn.classList.toggle('selected', active);

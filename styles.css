@@ -114,26 +114,30 @@ body {
 
 /* ---------- Day picker (pinned to the bottom, within thumb reach) ---------- */
 
+/* Split into two elements on purpose: position:sticky and overflow-x:auto on
+   the SAME element is an unreliable combination in Safari (the sticky
+   positioning can fail to stick at all). The outer .daypicker only sticks;
+   the inner .daypicker-scroll only scrolls. */
 .daypicker {
-  /* Sticky rather than fixed: it stays in normal flow, so it reserves its own
-     space instead of covering the last card, and it doesn't depend on the
-     browser reporting the viewport bottom correctly. margin-top pushes it down
-     when the day is too short to fill the screen. */
   position: sticky;
   bottom: 0;
   z-index: 20;
   margin-top: auto;
+  background: var(--ink);
+  box-shadow: 0 -14px 18px -10px rgba(0, 0, 0, 0.55);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.daypicker-scroll {
   display: flex;
   align-items: center;
   gap: 8px;
   overflow-x: auto;
-  padding: 12px 24px calc(10px + env(safe-area-inset-bottom));
-  background: var(--ink);
-  box-shadow: 0 -14px 18px -10px rgba(0, 0, 0, 0.55);
+  padding: 12px 24px 10px;
   scrollbar-width: none;
 }
 
-.daypicker::-webkit-scrollbar { display: none; }
+.daypicker-scroll::-webkit-scrollbar { display: none; }
 
 .month-tick {
   flex: 0 0 auto;
