@@ -159,6 +159,9 @@ function weddingHeaderHTML(couple) {
 // for this (unlike the map-pin feature), so any establishment with a `maps`
 // query gets a link. `instagram` is only ever a verified handle, never a guess.
 function googleMapsSearchURL(query) {
+  // A `maps` value that's already a URL (e.g. a maps.app.goo.gl link someone
+  // pasted directly) is used as-is instead of being wrapped as a search query.
+  if (/^https?:\/\//i.test(query)) return query;
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
 

@@ -2,7 +2,7 @@
 // nothing else needs to change.
 const TRIP = {
   // Bump this whenever the itinerary content changes — shown at the top of the page.
-  updated: '2026-08-15T11:41:53Z',
+  updated: '2026-08-15T11:44:31Z',
 
   // Trimmed to Sep 2–9 for now — full trip is Aug 28–Sep 16, see entries below.
   start: '2026-09-02',
@@ -284,8 +284,7 @@ const TRIP = {
         kind: 'meal',
         title: 'La Bourse et La Vie',
         notes: 'Locked reservation, 7:00 PM.',
-        address: '12 Rue Vivienne, 75002 Paris',
-        coords: [48.8695, 2.3403],
+        maps: 'https://maps.app.goo.gl/Ny7TcPvXgiarUJUj8?g_st=ic',
         instagram: 'labourselavie',
       },
       {
@@ -329,8 +328,7 @@ const TRIP = {
         kind: 'meal',
         title: 'Fringe',
         notes: 'Quick specialty coffee before the noon Bouillon République reservation — keep this brief.',
-        address: '106 Rue de Turenne, 75003 Paris',
-        coords: [48.8625, 2.3646],
+        maps: 'https://maps.app.goo.gl/1Lc1aJ47Y6qcnYPT6?g_st=ic',
         instagram: 'fringecoffeeparis',
       },
       {
