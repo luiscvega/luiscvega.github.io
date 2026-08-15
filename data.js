@@ -2,7 +2,7 @@
 // nothing else needs to change.
 const TRIP = {
   // Bump this whenever the itinerary content changes — shown at the top of the page.
-  updated: '2026-08-15T10:48:00Z',
+  updated: '2026-08-15T11:41:53Z',
 
   // Trimmed to Sep 2–9 for now — full trip is Aug 28–Sep 16, see entries below.
   start: '2026-09-02',
@@ -403,14 +403,14 @@ const TRIP = {
         time: '8:40 AM',
         kind: 'transit',
         title: 'Leave the Apartment',
-        notes: 'Walk/short metro toward the bakery stops — allow about 20 minutes.',
+        notes: 'Short walk to the bakery — allow about 20 minutes.',
       },
       {
         time: '9:00 AM',
         kind: 'meal',
-        title: 'Claire Damon / Terroirs d’Avenir',
-        notes: 'Pick up baguette, butter, cheese, berries, and pastries — strictly 2 stops max, skip Maison Louvard if either runs long.',
-        maps: 'Des Gâteaux et du Pain, Claire Damon, Paris',
+        title: 'Des Gâteaux et du Pain',
+        notes: 'Pick up baguette, butter, cheese, berries, and pastries — skip Maison Louvard if it runs long.',
+        address: '89 Rue du Bac, 75007 Paris',
         instagram: 'desgateauxetdupain.clairedamon',
       },
       {
