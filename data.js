@@ -166,13 +166,13 @@ const TRIP = {
         time: '3:55 PM',
         kind: 'transit',
         title: 'Travel to the Apartment',
-        notes: 'Allow 45–50 minutes after the train for luggage and the transfer — check-in may run later than 4:00 PM.',
+        notes: 'Allow up to 80 minutes after the train for luggage, the transfer, and check-in, which may run later than 4:00 PM.',
       },
       {
-        time: '4:45 PM',
+        time: '5:15 PM',
         kind: 'activity',
         title: 'Explore Saint-Germain & Rue de Buci',
-        notes: 'Flexible arrival-day stroll — shorten if check-in runs late.',
+        notes: 'Short arrival-day stroll before the café — flexible if check-in runs long.',
       },
       {
         time: '6:00 PM',
