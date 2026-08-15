@@ -39,10 +39,17 @@ body {
 }
 
 .stage {
+  /* Pinned to the true viewport edges instead of sized with 100dvh — dvh
+     calculation is unreliable in iOS's home-screen-installed standalone mode
+     and can fall short of the real bottom edge by roughly the home-indicator's
+     height, leaving a gap where the page's flatter background shows through. */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   max-width: 480px;
   margin: 0 auto;
-  height: 100vh;
-  height: 100dvh;
   display: flex;
   flex-direction: column;
 }
