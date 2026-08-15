@@ -481,11 +481,17 @@ let selectedDate = null;
 function dayIndex(date) { return ALL_DAYS.indexOf(date); }
 
 function updateDayPickerSelection(date) {
+  const picker = document.getElementById('daypicker');
   document.querySelectorAll('.day-pill').forEach(btn => {
     const active = btn.dataset.date === date;
     btn.classList.toggle('selected', active);
     btn.setAttribute('aria-pressed', String(active));
-    if (active) btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    // Scroll the strip itself rather than using scrollIntoView, which can also
+    // scroll the page — unwanted now that the picker sits at the bottom.
+    if (active) {
+      const left = btn.offsetLeft - (picker.clientWidth - btn.offsetWidth) / 2;
+      picker.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+    }
   });
 }
 
