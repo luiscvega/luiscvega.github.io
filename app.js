@@ -512,6 +512,38 @@ function setupDayPicker() {
   });
 }
 
+function setupSwipe() {
+  const el = document.getElementById('daydetail');
+  let startX = 0;
+  let startY = 0;
+  let tracking = false;
+
+  // No preventDefault anywhere here — vertical page scroll stays completely
+  // native. We just look at the finished gesture on touchend and decide,
+  // after the fact, whether it was mostly horizontal.
+  el.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1) { tracking = false; return; }
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    tracking = true;
+  }, { passive: true });
+
+  el.addEventListener('touchend', (e) => {
+    if (!tracking) return;
+    tracking = false;
+    const touch = e.changedTouches[0];
+    const deltaX = touch.clientX - startX;
+    const deltaY = touch.clientY - startY;
+
+    const SWIPE_THRESHOLD = 60;
+    if (Math.abs(deltaX) < SWIPE_THRESHOLD || Math.abs(deltaX) < Math.abs(deltaY) * 1.5) return;
+
+    const idx = dayIndex(selectedDate);
+    const target = ALL_DAYS[idx + (deltaX < 0 ? 1 : -1)];
+    if (target) goToDay(target);
+  }, { passive: true });
+}
+
 function setupQuickNav() {
   document.querySelectorAll('.quicknav button[data-jump]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -571,6 +603,7 @@ function init() {
   setInterval(renderLastUpdated, 60000);
   renderDayPicker(initial);
   setupDayPicker();
+  setupSwipe();
   setupQuickNav();
   setupCopyItinerary();
   setupMapOverlay();
