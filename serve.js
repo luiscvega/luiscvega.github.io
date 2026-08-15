@@ -14,8 +14,10 @@ const types = {
 const root = __dirname;
 
 http.createServer((req, res) => {
-  let file = req.url === '/' ? '/index.html' : req.url;
-  const filePath = path.join(root, decodeURIComponent(file.split('?')[0]));
+  // Strip the query before resolving, so "/?debug=1" still maps to index.html
+  // rather than trying to read the directory itself.
+  const pathname = decodeURIComponent(req.url.split('?')[0]);
+  const filePath = path.join(root, pathname === '/' ? '/index.html' : pathname);
   fs.readFile(filePath, (err, data) => {
     if (err) { res.writeHead(404); res.end('Not found'); return; }
     const ext = path.extname(filePath);
