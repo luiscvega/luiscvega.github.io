@@ -201,6 +201,12 @@ const TRIP = {
     ],
     '2026-09-03': [
       {
+        time: '6:00 AM',
+        kind: 'meal',
+        title: 'Breakfast at the Apartment',
+        notes: 'Quick breakfast before heading out for the day.',
+      },
+      {
         time: '8:40 AM',
         kind: 'transit',
         title: 'Travel to the Louvre',
