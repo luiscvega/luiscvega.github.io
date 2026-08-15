@@ -500,10 +500,11 @@ body {
   color: rgba(243, 236, 217, 0.32);
 }
 
-/* Pull a transit row closer to its neighbors instead of the standard 16px
-   gap, so it reads as a beat between two cards rather than a card itself. */
-.day-panel > .agenda-row:has(.plan-transit) { margin-top: 6px; }
-.day-panel > .agenda-row:has(.plan-transit) + .agenda-row { margin-top: 6px; }
+/* Pull a transit row a little closer to its neighbors than the standard 16px
+   gap, so it still reads as a beat between two cards rather than a card
+   itself, without crowding the cards on either side. */
+.day-panel > .agenda-row:has(.plan-transit) { margin-top: 12px; }
+.day-panel > .agenda-row:has(.plan-transit) + .agenda-row { margin-top: 12px; }
 
 /* ---------- Wedding ---------- */
 
