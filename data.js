@@ -2,7 +2,7 @@
 // nothing else needs to change.
 const TRIP = {
   // Bump this whenever the itinerary content changes — shown at the top of the page.
-  updated: '2026-08-15T06:10:24Z',
+  updated: '2026-08-15T07:32:39Z',
 
   // Trimmed to Sep 2–9 for now — full trip is Aug 28–Sep 16, see entries below.
   start: '2026-09-02',
@@ -374,6 +374,12 @@ const TRIP = {
     ],
     '2026-09-05': [
       {
+        time: '8:40 AM',
+        kind: 'transit',
+        title: 'Leave the Apartment',
+        notes: 'Walk/short metro toward the bakery stops — allow about 20 minutes.',
+      },
+      {
         time: '9:00 AM',
         kind: 'meal',
         title: 'Claire Damon / Terroirs d’Avenir',
@@ -423,6 +429,12 @@ const TRIP = {
       },
     ],
     '2026-09-06': [
+      {
+        time: '10:15 AM',
+        kind: 'transit',
+        title: 'Leave the Apartment',
+        notes: 'Easy walk along the Seine — Musée d’Orsay is close, same arrondissement.',
+      },
       {
         time: '10:30 AM',
         kind: 'activity',
@@ -479,6 +491,12 @@ const TRIP = {
       },
     ],
     '2026-09-07': [
+      {
+        time: '9:40 AM',
+        kind: 'transit',
+        title: 'Leave the Apartment',
+        notes: 'Walk toward the Seine and Pont Neuf — allow about 20 minutes.',
+      },
       {
         time: '10:00 AM',
         kind: 'meal',
@@ -549,6 +567,12 @@ const TRIP = {
       },
     ],
     '2026-09-08': [
+      {
+        time: '8:45 AM',
+        kind: 'transit',
+        title: 'Leave the Apartment',
+        notes: 'Montmartre is a real crossing from the 7th — metro with a transfer or a taxi, allow 40–45 minutes.',
+      },
       {
         time: '9:30 AM',
         kind: 'activity',
