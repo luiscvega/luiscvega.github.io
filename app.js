@@ -401,8 +401,8 @@ function dayPanelHTML(date) {
   return `<section class="day-panel" data-date="${date}">${inner}</section>`;
 }
 
-function renderDayPanels() {
-  document.getElementById('daydetail').innerHTML = ALL_DAYS.map(dayPanelHTML).join('');
+function renderDay(date) {
+  document.getElementById('daydetail').innerHTML = dayPanelHTML(date);
 }
 
 function tripMarkerIcon(kind, number) {
@@ -489,30 +489,14 @@ function updateDayPickerSelection(date) {
   });
 }
 
-function setSelected(date) {
-  if (date === selectedDate) return;
-  selectedDate = date;
-  updateDayPickerSelection(date);
-}
-
 function goToDay(date) {
-  const idx = dayIndex(date);
-  if (idx < 0) return;
-  const el = document.getElementById('daydetail');
-  el.scrollTo({ left: idx * el.clientWidth, behavior: 'auto' });
-  setSelected(date);
-}
-
-let scrollSettleTimer = null;
-
-function onDayDetailScroll() {
-  const el = document.getElementById('daydetail');
-  clearTimeout(scrollSettleTimer);
-  scrollSettleTimer = setTimeout(() => {
-    const idx = Math.round(el.scrollLeft / el.clientWidth);
-    const date = ALL_DAYS[idx];
-    if (date) setSelected(date);
-  }, 100);
+  if (dayIndex(date) < 0 || date === selectedDate) return;
+  selectedDate = date;
+  renderDay(date);
+  updateDayPickerSelection(date);
+  // Start a newly chosen day at its beginning rather than wherever the previous
+  // day happened to be scrolled to.
+  window.scrollTo({ top: 0, behavior: 'auto' });
 }
 
 function setupDayPicker() {
@@ -573,66 +557,6 @@ function setupCopyItinerary() {
   });
 }
 
-/* ---------- Layout diagnostics (opt-in via ?debug=1) ---------- */
-
-// Only runs when the URL explicitly asks for it, so the normal site is untouched.
-// Draws markers at the bottom edges the layout *thinks* it has, next to a readout
-// of the viewport numbers — enough to tell whether a fixed, full-height element
-// actually reaches the physical bottom of the screen on a given device.
-function renderLayoutDiagnostics() {
-  if (!/[?&]debug=1/.test(window.location.search)) return;
-
-  function measureEnv(name) {
-    const probe = document.createElement('div');
-    probe.style.cssText = `position:fixed;left:-9999px;top:0;height:env(${name});`;
-    document.body.appendChild(probe);
-    const value = probe.getBoundingClientRect().height;
-    probe.remove();
-    return value;
-  }
-
-  function marker(color, bottomPx, label) {
-    const el = document.createElement('div');
-    el.style.cssText = `position:fixed;left:0;right:0;bottom:${bottomPx}px;height:2px;background:${color};z-index:9999;pointer-events:none;`;
-    const tag = document.createElement('span');
-    tag.textContent = label;
-    tag.style.cssText = `position:absolute;right:4px;bottom:2px;font:700 10px monospace;color:${color};`;
-    el.appendChild(tag);
-    document.body.appendChild(el);
-  }
-
-  const stage = document.querySelector('.stage').getBoundingClientRect();
-  const panel = document.querySelector('.day-panel').getBoundingClientRect();
-  const vv = window.visualViewport;
-
-  // Magenta sits at `bottom: 0` for a fixed element. If it renders above the
-  // physical bottom of the screen, the viewport itself is short — which is the
-  // single fact that decides what the real fix is.
-  marker('#ff00ff', 0, 'fixed bottom:0');
-  marker('#00ffff', Math.max(0, window.innerHeight - stage.bottom), 'stage bottom');
-
-  const rows = [
-    ['innerHeight', window.innerHeight],
-    ['clientHeight', document.documentElement.clientHeight],
-    ['visualViewport', vv ? Math.round(vv.height) : 'n/a'],
-    ['screen.height', window.screen.height],
-    ['safe-top', measureEnv('safe-area-inset-top')],
-    ['safe-bottom', measureEnv('safe-area-inset-bottom')],
-    ['stage top/bot', `${stage.top.toFixed(0)}/${stage.bottom.toFixed(0)}`],
-    ['panel bottom', panel.bottom.toFixed(0)],
-    ['standalone', navigator.standalone],
-    ['dpr', window.devicePixelRatio],
-  ];
-
-  const box = document.createElement('div');
-  box.style.cssText =
-    'position:fixed;left:8px;bottom:56px;z-index:9999;background:rgba(0,0,0,0.88);color:#0f0;' +
-    'font:600 11px/1.45 monospace;padding:8px 10px;border-radius:6px;pointer-events:none;' +
-    'display:grid;grid-template-columns:auto auto;gap:0 10px;';
-  box.innerHTML = rows.map(([k, v]) => `<span style="color:#888">${k}</span><span>${v}</span>`).join('');
-  document.body.appendChild(box);
-}
-
 function init() {
   const initial = clampToTrip(todayISO());
   setupServiceWorker();
@@ -640,16 +564,13 @@ function init() {
   renderLastUpdated();
   setInterval(renderLastUpdated, 60000);
   renderDayPicker(initial);
-  renderDayPanels();
   setupDayPicker();
   setupQuickNav();
   setupCopyItinerary();
   setupMapOverlay();
-  document.getElementById('daydetail').addEventListener('scroll', onDayDetailScroll, { passive: true });
-  window.addEventListener('resize', () => goToDay(selectedDate));
   selectedDate = initial;
-  goToDay(initial);
-  renderLayoutDiagnostics();
+  renderDay(initial);
+  updateDayPickerSelection(initial);
 }
 
 init();
