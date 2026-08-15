@@ -4,6 +4,7 @@ const TRAIN_ICON = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
 const TRANSIT_ICON = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>';
 const MEAL_ICON = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>';
 const SIGHT_ICON = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3"/></svg>';
+const MAP_ICON = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.5 7-12a7 7 0 0 0-14 0c0 4.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.3"/></svg>';
 
 function pad(n) { return String(n).padStart(2, '0'); }
 
@@ -326,7 +327,7 @@ function renderDayPicker(selected) {
 
 /* ---------- Day detail ---------- */
 
-function dayHeadHTML(date) {
+function dayHeadHTML(date, points) {
   const full = parseISO(date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
   const dayNum = daysBetween(date, TRIP.start) + 1;
   const totalDays = daysBetween(TRIP.end, TRIP.start) + 1;
@@ -334,8 +335,11 @@ function dayHeadHTML(date) {
   const badge = date === todayISO() ? '<span class="today-badge">Today</span>' : '';
   return `
     <div class="day-head">
-      <p class="day-head-date">${full}${badge}</p>
-      <p class="day-head-sub">Day ${dayNum} of ${totalDays}${stay ? ' · ' + stay.city : ''}</p>
+      <div class="day-head-text">
+        <p class="day-head-date">${full}${badge}</p>
+        <p class="day-head-sub">Day ${dayNum} of ${totalDays}${stay ? ' · ' + stay.city : ''}</p>
+      </div>
+      ${mapTriggerHTML(date, points)}
     </div>`;
 }
 
@@ -344,8 +348,8 @@ const DAY_MAP_POINTS = {};
 function mapTriggerHTML(date, points) {
   if (!points.length) return '';
   DAY_MAP_POINTS[date] = points;
-  const count = points.length === 1 ? '1 stop' : `${points.length} stops`;
-  return `<button class="map-trigger" data-date="${date}">View on map &middot; ${count}</button>`;
+  const label = `View ${points.length} stop${points.length === 1 ? '' : 's'} on map`;
+  return `<button class="map-trigger" data-date="${date}" aria-label="${label}">${MAP_ICON}<span>${points.length}</span></button>`;
 }
 
 function dayPanelHTML(date) {
@@ -376,13 +380,6 @@ function dayPanelHTML(date) {
 
   items.sort((a, b) => a.sort - b.sort);
 
-  let inner = dayHeadHTML(date);
-  if (items.length) {
-    items.forEach(it => { inner += it.html; });
-  } else {
-    inner += emptyDayHTML();
-  }
-
   const planPoints = plans
     .filter(p => p.coords)
     .slice()
@@ -396,7 +393,12 @@ function dayPanelHTML(date) {
   }
   points.push(...planPoints);
 
-  inner += mapTriggerHTML(date, points);
+  let inner = dayHeadHTML(date, points);
+  if (items.length) {
+    items.forEach(it => { inner += it.html; });
+  } else {
+    inner += emptyDayHTML();
+  }
 
   return `<section class="day-panel" data-date="${date}">${inner}</section>`;
 }

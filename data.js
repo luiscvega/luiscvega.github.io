@@ -2,7 +2,7 @@
 // nothing else needs to change.
 const TRIP = {
   // Bump this whenever the itinerary content changes — shown at the top of the page.
-  updated: '2026-08-15T08:00:13Z',
+  updated: '2026-08-15T08:26:53Z',
 
   // Trimmed to Sep 2–9 for now — full trip is Aug 28–Sep 16, see entries below.
   start: '2026-09-02',
@@ -364,6 +364,8 @@ const TRIP = {
         kind: 'activity',
         title: 'Arrive at the Venue',
         notes: 'Arrive early enough to find the entrance, check in, and settle before the 7:00 PM event.',
+        address: 'Le Studio des Acacias, 30 Rue des Acacias, 75017 Paris',
+        coords: [48.8753, 2.29],
       },
     ],
     '2026-09-05': [
