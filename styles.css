@@ -24,41 +24,34 @@ html {
 
 body {
   margin: 0;
-  overflow: hidden;
+  min-height: 100%;
   background: var(--ink);
   background-image: var(--grain-dark), radial-gradient(circle at 50% -10%, rgba(184, 134, 46, 0.14), transparent 55%);
+  background-attachment: fixed;
   color: var(--cream-text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   line-height: 1.4;
 }
 
-/* Sized with lvh, not bottom:0/dvh/innerHeight — confirmed via on-device
-   diagnostics that this iOS standalone PWA under-reports innerHeight/dvh by
-   ~59px versus the true screen height (a known WebKit bug where standalone
-   mode still reserves space for browser chrome that isn't there). lvh
-   ("largest viewport height") matched window.screen.height exactly. vh/dvh
-   stay as fallbacks for browsers without lvh support. Top bar and day picker
-   are plain flex children at the top/bottom of this shell; only #daydetail
-   in the middle scrolls. One scroll region, not nested ones. */
+/* The page scrolls normally — no fixed shell, no dedicated scroll region.
+   This is the version that was actually confirmed bug-free on-device;
+   everything built on top of position:fixed (the always-visible top/bottom
+   bars) kept surfacing new iOS-standalone-only rendering issues one after
+   another. Letting the document itself scroll is what iOS handles most
+   reliably around its own system UI. */
 .stage {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 100vh;
-  height: 100dvh;
-  height: 100lvh;
   max-width: 480px;
   margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
 
-/* ---------- Top bar (always visible — pinned by being part of the fixed shell) ---------- */
+/* ---------- Top bar (scrolls away with the page — the dates below are the main control) ---------- */
 
 .topbar {
-  flex: 0 0 auto;
   padding-top: env(safe-area-inset-top);
 }
 
@@ -121,21 +114,15 @@ body {
 
 /* ---------- Day picker (pinned to the bottom, within thumb reach) ---------- */
 
-/* No position:sticky needed any more -- .daypicker is simply the last flex
-   child of the fixed .stage shell, so it's always at the bottom already.
-   (Still split from .daypicker-scroll for the horizontal-scroll strip itself,
-   which is unrelated to this.) */
+/* Sits in normal page flow, not fixed/sticky — margin-top:auto pushes it to
+   the bottom of .stage's box even on a short day (.stage has a min-height of
+   one viewport), while still just being a normal element that scrolls away
+   with everything else on a long day. */
 .daypicker {
-  flex: 0 0 auto;
-  position: relative;
+  margin-top: auto;
   background: var(--ink);
   box-shadow: 0 -14px 18px -10px rgba(0, 0, 0, 0.55);
   padding-bottom: env(safe-area-inset-bottom);
-  /* Own compositor layer, isolated from whatever's scrolling above it in
-     #daydetail — guards against a stale-paint artifact at the edge of a
-     horizontally scrollable strip that can show up on iOS after repeated
-     reloads (this app reloads itself on every content update). */
-  transform: translateZ(0);
 }
 
 .daypicker-scroll {
@@ -143,8 +130,6 @@ body {
   align-items: center;
   gap: 8px;
   overflow-x: auto;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
   padding: 12px 24px 10px;
   scrollbar-width: none;
 }
@@ -204,15 +189,7 @@ body {
 .day-pill.selected .dot.travel { background: var(--ink); }
 .day-pill.selected .dot.wedding { background: var(--bordeaux); }
 
-/* ---------- Day detail (the one scrollable region) ---------- */
-
-.daydetail {
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: contain;
-}
+/* ---------- Day detail (in normal page flow, no dedicated scroll region) ---------- */
 
 /* No safe-area inset needed here — the day picker below owns that. */
 .day-panel {
