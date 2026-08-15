@@ -33,17 +33,22 @@ body {
   line-height: 1.4;
 }
 
-/* Fixed to the true viewport edges (not sized with dvh — dvh calculation is
-   unreliable in iOS's home-screen-installed standalone mode and can come up
-   short of the real bottom edge). Top bar and day picker are plain flex
-   children that just sit at the top/bottom of this fixed shell; only
-   #daydetail in the middle scrolls. One scroll region, not nested ones. */
+/* Sized with lvh, not bottom:0/dvh/innerHeight — confirmed via on-device
+   diagnostics that this iOS standalone PWA under-reports innerHeight/dvh by
+   ~59px versus the true screen height (a known WebKit bug where standalone
+   mode still reserves space for browser chrome that isn't there). lvh
+   ("largest viewport height") matched window.screen.height exactly. vh/dvh
+   stay as fallbacks for browsers without lvh support. Top bar and day picker
+   are plain flex children at the top/bottom of this shell; only #daydetail
+   in the middle scrolls. One scroll region, not nested ones. */
 .stage {
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 0;
   left: 0;
+  height: 100vh;
+  height: 100dvh;
+  height: 100lvh;
   max-width: 480px;
   margin: 0 auto;
   display: flex;
