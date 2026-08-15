@@ -2,7 +2,15 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'application/javascript' };
+const types = {
+  '.html': 'text/html',
+  '.css': 'text/css',
+  '.js': 'application/javascript',
+  '.json': 'application/json',
+  '.svg': 'image/svg+xml',
+  '.png': 'image/png',
+  '.csv': 'text/csv',
+};
 const root = __dirname;
 
 http.createServer((req, res) => {

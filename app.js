@@ -178,6 +178,65 @@ function emptyDayHTML() {
   return `<div class="day-open"><span class="day-open-rule"></span><span class="day-open-mark">&#9670;</span><span class="day-open-rule"></span></div>`;
 }
 
+/* ---------- PWA install + auto-update ---------- */
+
+function setupServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+
+  // Only a hand-off from an already-active worker to a new one is a real update.
+  // The first-ever activation (no prior controller) also fires 'controllerchange',
+  // and reloading then would just double-load every first visit for nothing.
+  const hadController = !!navigator.serviceWorker.controller;
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+
+  let reloadedForNewWorker = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController || reloadedForNewWorker) return;
+    reloadedForNewWorker = true;
+    window.location.reload();
+  });
+}
+
+function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+// Every versioned <script>/<link> on the page is "name?v=N" (the same cache-busting
+// convention already used whenever data.js/app.js/styles.css content changes).
+// Comparing our own versions against a fresh fetch of index.html is a simple, reliable
+// way to notice a new deploy without inventing a separate versioning scheme.
+function currentAssetVersions() {
+  const versions = {};
+  document.querySelectorAll('script[src], link[rel="stylesheet"][href]').forEach((el) => {
+    const url = el.getAttribute('src') || el.getAttribute('href');
+    const match = url && url.match(/^([\w.]+)\?v=(\d+)/);
+    if (match) versions[match[1]] = match[2];
+  });
+  return versions;
+}
+
+async function checkForContentUpdate() {
+  try {
+    const res = await fetch('index.html', { cache: 'no-store' });
+    const html = await res.text();
+    const current = currentAssetVersions();
+    for (const file in current) {
+      const match = html.match(new RegExp(escapeRegExp(file) + '\\?v=(\\d+)'));
+      if (match && match[1] !== current[file]) {
+        window.location.reload();
+        return;
+      }
+    }
+  } catch (err) {
+    // Offline or a transient network hiccup — just try again on the next interval.
+  }
+}
+
+function setupAutoUpdate() {
+  setInterval(checkForContentUpdate, 60000);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') checkForContentUpdate();
+  });
+}
+
 /* ---------- Last updated ---------- */
 
 function relativeTimeFromNow(date) {
@@ -478,6 +537,8 @@ function setupCopyItinerary() {
 
 function init() {
   const initial = clampToTrip(todayISO());
+  setupServiceWorker();
+  setupAutoUpdate();
   renderLastUpdated();
   setInterval(renderLastUpdated, 60000);
   renderDayPicker(initial);
