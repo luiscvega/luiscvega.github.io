@@ -2,7 +2,7 @@
 // nothing else needs to change.
 const TRIP = {
   // Bump this whenever the itinerary content changes — shown at the top of the page.
-  updated: '2026-08-15T08:26:53Z',
+  updated: '2026-08-15T08:37:12Z',
 
   // Trimmed to Sep 2–9 for now — full trip is Aug 28–Sep 16, see entries below.
   start: '2026-09-02',
@@ -296,6 +296,8 @@ const TRIP = {
         kind: 'activity',
         title: 'Place des Vosges & Hôtel de Sully',
         notes: 'Morning stroll through Le Marais.',
+        address: 'Place des Vosges, 75004 Paris',
+        coords: [48.8556, 2.3654],
       },
       {
         time: '10:30 AM',
@@ -308,6 +310,8 @@ const TRIP = {
         kind: 'meal',
         title: 'Fringe',
         notes: 'Quick specialty coffee before the noon Bouillon République reservation — keep this brief.',
+        address: '106 Rue de Turenne, 75003 Paris',
+        coords: [48.8625, 2.3646],
       },
       {
         time: '12:00 PM',
@@ -326,6 +330,8 @@ const TRIP = {
         kind: 'activity',
         title: 'Marché des Enfants Rouges',
         notes: 'Post-lunch market visit — browse the food stalls, dessert or coffee if desired.',
+        address: '39 Rue de Bretagne, 75003 Paris',
+        coords: [48.8630, 2.3621],
       },
       {
         time: '3:00 PM',
