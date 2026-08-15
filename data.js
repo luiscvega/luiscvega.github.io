@@ -2,7 +2,7 @@
 // nothing else needs to change.
 const TRIP = {
   // Bump this whenever the itinerary content changes — shown at the top of the page.
-  updated: '2026-08-15T07:32:39Z',
+  updated: '2026-08-15T08:00:13Z',
 
   // Trimmed to Sep 2–9 for now — full trip is Aug 28–Sep 16, see entries below.
   start: '2026-09-02',
@@ -203,12 +203,6 @@ const TRIP = {
       },
     ],
     '2026-09-03': [
-      {
-        time: '6:00 AM',
-        kind: 'meal',
-        title: 'Breakfast at the Apartment',
-        notes: 'Quick breakfast before heading out for the day.',
-      },
       {
         time: '8:40 AM',
         kind: 'transit',
