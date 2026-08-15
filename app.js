@@ -207,7 +207,7 @@ let contentBaseline = null;
 
 async function fetchWatchedSnapshot() {
   const texts = await Promise.all(WATCHED_FILES.map((f) => fetch(f, { cache: 'no-store' }).then((res) => res.text())));
-  return texts.join(' ');
+  return texts.join(' ');
 }
 
 async function checkForContentUpdate() {
