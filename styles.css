@@ -331,6 +331,10 @@ body {
   overflow-wrap: break-word;
 }
 
+/* Align the time label with the slimmer transit row instead of floating high
+   above it at the offset calibrated for a full card. */
+.agenda-row:has(.plan-transit) .agenda-time { padding-top: 2px; }
+
 .agenda-time .a-value {
   font-family: 'Space Mono', monospace;
   font-weight: 700;
@@ -431,7 +435,6 @@ body {
 }
 
 .plan-card.plan-meal { border-left-color: var(--clay); }
-.plan-card.plan-transit { border-left-color: var(--charcoal-soft); }
 
 .plan-title {
   margin: 0;
@@ -457,13 +460,50 @@ body {
 }
 
 .plan-meal .plan-icon { background: var(--clay); }
-.plan-transit .plan-icon { background: var(--charcoal-soft); }
 
 .plan-notes {
   margin: 4px 0 0;
   font-size: 0.85rem;
   color: var(--charcoal-soft);
 }
+
+/* Transit rows ("Travel to X") are connective tissue between the real stops,
+   not a destination in their own right — a plain parchment card gave them the
+   same visual weight as everything else. Ghosted instead: no card surface,
+   dim inline text on the page's own dark background, small unfilled icon. */
+.plan-card.plan-transit {
+  background: none;
+  box-shadow: none;
+  border-left: none;
+  padding: 2px 0 2px 18px;
+}
+
+.plan-transit .plan-title {
+  gap: 6px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  font-size: 0.82rem;
+  color: rgba(243, 236, 217, 0.5);
+}
+
+.plan-transit .plan-icon {
+  width: 15px;
+  height: 15px;
+  border-radius: 0;
+  background: none;
+  color: rgba(243, 236, 217, 0.4);
+}
+
+.plan-transit .plan-notes {
+  margin-top: 2px;
+  font-size: 0.76rem;
+  color: rgba(243, 236, 217, 0.32);
+}
+
+/* Pull a transit row closer to its neighbors instead of the standard 16px
+   gap, so it reads as a beat between two cards rather than a card itself. */
+.day-panel > .agenda-row:has(.plan-transit) { margin-top: 6px; }
+.day-panel > .agenda-row:has(.plan-transit) + .agenda-row { margin-top: 6px; }
 
 /* ---------- Wedding ---------- */
 
